@@ -1,11 +1,11 @@
-/*Presupuesto*/
+/*Gastos*/
 import { Table, Model, Column, DataType, HasMany, BelongsTo, ForeignKey } from 'sequelize-typescript'
-import Expense from './Expense'
+import Budget from './Budget'
 
 @Table({
-  tableName: 'budgets',
+  tableName: 'expenses',
 })
-class Budget extends Model {
+class Expense extends Model {
   @Column({
     type: DataType.STRING(100),
     allowNull: false,
@@ -18,10 +18,11 @@ class Budget extends Model {
   })
   declare amount: number
 
-  @HasMany(() => Expense, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
-  declare expenses: Expense[]
+  /*El gasto le pertenece al presupuesto*/
+  @ForeignKey(() => Budget)
+  declare budgetId: number
+
+  @BelongsTo(() => Budget)
+  declare budget: Budget
 }
-export default Budget
+export default Expense

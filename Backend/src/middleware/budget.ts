@@ -10,6 +10,7 @@ declare global {
   }
 }
 
+/*Validacion de presupuestos por id*/
 export const validateBudgetId = async (req: Request, res: Response, next: NextFunction) => {
   await param('budgetId')
     .isInt().withMessage('ID no valido, debe ser un numero entero')
@@ -18,12 +19,13 @@ export const validateBudgetId = async (req: Request, res: Response, next: NextFu
 
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() })
+    res.status(422).json({ errors: errors.array() })
     return
   }
 
   next()
 }
+/*Validar que el presupuesto exista*/
 export const validateBudgetExists = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { budgetId } = req.params
