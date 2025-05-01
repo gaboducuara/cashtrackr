@@ -5,7 +5,8 @@ import { handleInputErrors } from '../middleware/validation'
 import { limiter } from '../config/limiter'
 
 const router: Router = Router()
-
+/*limitar la cantidad de peticiones login que puede hacer una persona*/
+router.use(limiter)
 router.post('/create-account',
   body('name').notEmpty().withMessage('El nombre es obligatorio.'),
   body('password').isLength({ min: 8 }).withMessage('El password debe tener al menos 8 caracteres.'),
@@ -16,7 +17,6 @@ router.post('/create-account',
 /*Confirmacion de cuenta*/
 /*Se envia un token al email del usuario para confirmar la cuenta*/
 router.post('/confirm-account',
-  limiter,
   body('token')
     .notEmpty()
     .isLength({ min: 6, max: 6 })
@@ -24,7 +24,15 @@ router.post('/confirm-account',
   handleInputErrors,
   AuthController.ConfirmedAccount
 )
-
+/*Login*/
+router.post('/login',
+  // limiter,
+  body('email').isEmail().withMessage('El email no es valido.'),
+  body('password').notEmpty().withMessage('El password es obligatorio.'),
+  handleInputErrors,
+  AuthController.Login
+)
+/*Recuperar Password*/
 export default router
 
 

@@ -1,8 +1,10 @@
 import type { Request, Response } from 'express';
 import User from '../models/User';
-import { hasPassword } from '../utils/auth';
+import { hasPassword, checkPassword } from '../utils/auth';
 import { generateToken } from '../utils/token';
 import { AuthEmail } from '../emails/AuthEmail';
+import { generateJWT } from '../utils/jwt';
+
 export class AuthController {
   static createAccount = async (req: Request, res: Response) => {
     const { email, password } = req.body
@@ -14,7 +16,6 @@ export class AuthController {
       res.status(409).json({ error: e.message });
       return
     }
-
     try {
       const user = new User(req.body)
       //Hash de password
@@ -36,7 +37,6 @@ export class AuthController {
       return
     }
   }
-
   //Confirmar Cuenta
   static ConfirmedAccount = async (req: Request, res: Response) => {
     /*Confirmar Cuenta se usuario*/
@@ -59,5 +59,32 @@ export class AuthController {
         res.status(401).json({ error: e.message });
         return
     }
+  }
+  static Login = async (req: Request, res: Response) => {
+    const { email, password } = req.body
+    //Validar si el email ya existe en la base de datos
+    const user = await User.findOne({ where: { email } })
+    if (!user) {
+      const e = new Error('Usuario no encontrado.')
+      res.status(404).json({ error: e.message });
+      return
+    }
+
+    // Verificar si la cuenta esta confirmada
+    if(!user.confirmed) {
+      const e = new Error('La Cuenta no ha sido Confirmada.')
+      res.status(403).json({ error: e.message });
+      return
+    }
+    // Verificar si el password es correcto
+    const isPasswordCorrect = await checkPassword(password, user.password)
+    if(!isPasswordCorrect) {
+      const e = new Error('Password Incorrecto.')
+      res.status(401).json({ error: e.message });
+      return
+    }
+    // Generar token de acceso
+    const token = generateJWT(user.id)
+    res.json(token)
   }
 }
