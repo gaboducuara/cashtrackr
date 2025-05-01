@@ -1,20 +1,20 @@
 /*Gastos*/
-import { Table, Model, Column, DataType, HasMany, BelongsTo, ForeignKey } from 'sequelize-typescript'
+import { Table, Model, Column, DataType, HasMany, BelongsTo, ForeignKey, AllowNull } from 'sequelize-typescript'
 import Budget from './Budget'
 
 @Table({
   tableName: 'expenses',
 })
 class Expense extends Model {
+  @AllowNull(false)
   @Column({
     type: DataType.STRING(100),
-    allowNull: false,
   })
   declare name: string
 
+  @AllowNull(false)
   @Column({
     type: DataType.DECIMAL,
-    allowNull: false,
   })
   declare amount: number
 
