@@ -33,7 +33,7 @@ class User extends Model {
   @Column({
     type: DataType.BOOLEAN,
   })
-  declare confirmed: string
+  declare confirmed: boolean
 
   /*Un usuario a muchos presupuestos*/
   @HasMany(() => Budget, {

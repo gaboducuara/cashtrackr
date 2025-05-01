@@ -2,8 +2,9 @@ import { Router } from 'express'
 import { body } from 'express-validator'
 import { AuthController } from '../controllers/AuthController'
 import { handleInputErrors } from '../middleware/validation'
+import { limiter } from '../config/limiter'
 
-const router:Router = Router()
+const router: Router = Router()
 
 router.post('/create-account',
   body('name').notEmpty().withMessage('El nombre es obligatorio.'),
@@ -11,6 +12,18 @@ router.post('/create-account',
   body('email').isEmail().withMessage('El email no es valido.'),
   handleInputErrors,
   AuthController.createAccount)
+
+/*Confirmacion de cuenta*/
+/*Se envia un token al email del usuario para confirmar la cuenta*/
+router.post('/confirm-account',
+  limiter,
+  body('token')
+    .notEmpty()
+    .isLength({ min: 6, max: 6 })
+    .withMessage('El token no es Valido.'),
+  handleInputErrors,
+  AuthController.ConfirmedAccount
+)
 
 export default router
 
