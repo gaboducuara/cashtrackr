@@ -87,4 +87,57 @@ export class AuthController {
     const token = generateJWT(user.id)
     res.json(token)
   }
+  //forgot-password, Contraseña Olvidada
+  static forgotPassword = async (req: Request, res: Response) => {
+    const { email } = req.body
+    //Revisar si el usuario existe
+    const user = await User.findOne({ where: { email } })
+    if (!user) {
+      const e = new Error('Usuario no encontrado.')
+      res.status(404).json({ error: e.message });
+      return
+    }
+    user.token = generateToken()
+    await user.save()
+
+    //Envio de mensaje en el reseteo de contraseña
+    await AuthEmail.sendPasswordResetToken({
+    name: user.name,
+    email: user.email,
+    token: user.token
+    })
+    res.json('Revisa tu Email, para instrucciones.')
+}
+/*Validacion de token*/
+static validateToken = async (req: Request, res: Response) => {
+  const { token } = req.body
+  //Revisar si el token existe
+  const tokenExist = await User.findOne({ where: { token } })
+  if (!tokenExist) {
+    const e = new Error('token no encontrado.')
+    res.status(404).json({ error: e.message });
+    return
+  }
+  res.json('Token valido...')
+}
+/*Validar token y validar password y volver a hasheard*/
+static resetPasswordWithToken = async (req: Request, res: Response) => {
+  const { token } = req.params
+  const { password } = req.body
+
+  //Revisar si el token existe
+  const user = await User.findOne({ where: { token } })
+  if (!user) {
+    const e = new Error('token no encontrado.')
+    res.status(404).json({ error: e.message });
+    return
+  }
+  //Asignar el nuevo password o hashear password
+  user.password = await hasPassword(password)
+  //invalidando token para que el usuario no vuelva a usarlo
+  user.token = null
+  user.save()
+  res.json('El password se modifico correctamente')
+
+}
 }

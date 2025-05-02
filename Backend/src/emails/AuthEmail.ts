@@ -6,7 +6,6 @@ type EmailType = {
 }
 export class AuthEmail {
   static sendConfirmationEmail = async (user: EmailType) => {
-
     const email = await transport.sendMail({
       from: 'castrackr <admin@cashtrackr.com>',
       to: user.email,
@@ -15,6 +14,20 @@ export class AuthEmail {
       en cashtrackr, ya casi esta lista</p>
       <p>visita el siguiente enlace:</p>
       <a href="#">Confirma Cuenta</a>
+      <p>e ingresa el codigo: <b>${user.token}</b><p/>
+      `
+    })
+    console.log('Mensaje enviado', email.messageId)
+  }
+  /*Construccion del mensaje de Reseteo de Contraseña*/
+  static sendPasswordResetToken = async (user: EmailType) => {
+    const email = await transport.sendMail({
+      from: 'castrackr <admin@cashtrackr.com>',
+      to: user.email,
+      subject: 'CashTrackr - Reestablece tu password',
+      html: ` <p>Hola: ${user.name}, has solicitado Reestablecer tu password</p>
+      <p>Visita el siguiente enlace:</p>
+      <a href="#">Reestablecer Password</a>
       <p>e ingresa el codigo: <b>${user.token}</b><p/>
       `
     })

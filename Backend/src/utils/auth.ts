@@ -7,6 +7,4 @@ export const hasPassword = async (password: string) => {
 //comparar los password de base de datos(encriptado) y el que ingresa el usuario
 export const checkPassword = async (password: string, hashedPassword: string) => {
   return await bcrypt.compare(password, hashedPassword);
-  // console.log(password)
-  // console.log(hashedPassword)
 }
