@@ -3,6 +3,7 @@ import { body, param } from 'express-validator'
 import { AuthController } from '../controllers/AuthController'
 import { handleInputErrors } from '../middleware/validation'
 import { limiter } from '../config/limiter'
+import { authenticated } from '../middleware/auth'
 
 const router: Router = Router()
 /*limitar la cantidad de peticiones login que puede hacer una persona*/
@@ -57,6 +58,12 @@ router.post('/reset-password/:token',
     .isLength({ min: 8 }).withMessage('El password debe tener al menos 8 caracteres.'),
   handleInputErrors,
   AuthController.resetPasswordWithToken
+)
+
+//informacion del usuario validando el jsonwebtoken
+router.get('/user',
+  authenticated,
+  AuthController.user
 )
 export default router
 

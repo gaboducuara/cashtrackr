@@ -56,8 +56,8 @@ export class AuthController {
       res.status(200).json('Cuenta confirmada correctamente.');
     } catch (error) {
       const e = new Error('Existe Error en la Creacion de la Cuenta.')
-        res.status(401).json({ error: e.message });
-        return
+      res.status(401).json({ error: e.message });
+      return
     }
   }
   static Login = async (req: Request, res: Response) => {
@@ -71,14 +71,14 @@ export class AuthController {
     }
 
     // Verificar si la cuenta esta confirmada
-    if(!user.confirmed) {
+    if (!user.confirmed) {
       const e = new Error('La Cuenta no ha sido Confirmada.')
       res.status(403).json({ error: e.message });
       return
     }
     // Verificar si el password es correcto
     const isPasswordCorrect = await checkPassword(password, user.password)
-    if(!isPasswordCorrect) {
+    if (!isPasswordCorrect) {
       const e = new Error('Password Incorrecto.')
       res.status(401).json({ error: e.message });
       return
@@ -102,42 +102,46 @@ export class AuthController {
 
     //Envio de mensaje en el reseteo de contraseña
     await AuthEmail.sendPasswordResetToken({
-    name: user.name,
-    email: user.email,
-    token: user.token
+      name: user.name,
+      email: user.email,
+      token: user.token
     })
     res.json('Revisa tu Email, para instrucciones.')
-}
-/*Validacion de token*/
-static validateToken = async (req: Request, res: Response) => {
-  const { token } = req.body
-  //Revisar si el token existe
-  const tokenExist = await User.findOne({ where: { token } })
-  if (!tokenExist) {
-    const e = new Error('token no encontrado.')
-    res.status(404).json({ error: e.message });
-    return
   }
-  res.json('Token valido...')
-}
-/*Validar token y validar password y volver a hasheard*/
-static resetPasswordWithToken = async (req: Request, res: Response) => {
-  const { token } = req.params
-  const { password } = req.body
-
-  //Revisar si el token existe
-  const user = await User.findOne({ where: { token } })
-  if (!user) {
-    const e = new Error('token no encontrado.')
-    res.status(404).json({ error: e.message });
-    return
+  /*Validacion de token*/
+  static validateToken = async (req: Request, res: Response) => {
+    const { token } = req.body
+    //Revisar si el token existe
+    const tokenExist = await User.findOne({ where: { token } })
+    if (!tokenExist) {
+      const e = new Error('token no encontrado.')
+      res.status(404).json({ error: e.message });
+      return
+    }
+    res.json('Token valido...')
   }
-  //Asignar el nuevo password o hashear password
-  user.password = await hasPassword(password)
-  //invalidando token para que el usuario no vuelva a usarlo
-  user.token = null
-  user.save()
-  res.json('El password se modifico correctamente')
+  /*Validar token y validar password y volver a hasheard*/
+  static resetPasswordWithToken = async (req: Request, res: Response) => {
+    const { token } = req.params
+    const { password } = req.body
 
-}
+    //Revisar si el token existe
+    const user = await User.findOne({ where: { token } })
+    if (!user) {
+      const e = new Error('token no encontrado.')
+      res.status(404).json({ error: e.message });
+      return
+    }
+    //Asignar el nuevo password o hashear password
+    user.password = await hasPassword(password)
+    //invalidando token para que el usuario no vuelva a usarlo
+    user.token = null
+    user.save()
+    res.json('El password se modifico correctamente')
+
+  }
+
+  static user = async (req: Request, res: Response) => {
+    res.json(req.user)
+  }
 }
