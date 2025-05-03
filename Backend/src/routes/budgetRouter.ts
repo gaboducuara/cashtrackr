@@ -1,14 +1,20 @@
 import { Router } from 'express'
-import { validateBudgetExists, validateBudgetId, validateBudgetInput } from '../middleware/budget'
+import { hasAcess, validateBudgetExists, validateBudgetId, validateBudgetInput } from '../middleware/budget'
 import { BudgetController } from '../controllers/BudgetController';
 import { handleInputErrors } from '../middleware/validation';
 import { ExpensesController } from '../controllers/ExpenseController';
 import { validateExpenseExists, validateExpenseId, validateExpenseInput } from '../middleware/expense';
+import { authenticated } from '../middleware/auth';
 
 const router: Router = Router()
+
+/*para que un usuario crear y realizar presupuestos debe estar autenticado*/
+router.use(authenticated)
+
 /*Presupuestos*/
 router.param('budgetId', validateBudgetId)
 router.param('budgetId', validateBudgetExists)
+router.param('budgetId', hasAcess)
 
 /*Gastos*/
 router.param('expenseId', validateExpenseId)

@@ -31,7 +31,7 @@ export const validateBudgetExists = async (req: Request, res: Response, next: Ne
     const { budgetId } = req.params
     const budget = await Budget.findByPk(budgetId)
     if (!budget) {
-      const error = new Error('El Id con ese presupuesto no ha sido encontrado.')
+      const error = new Error('Presupuesto no ha sido encontrado.')
       res.status(404).json({ error: error.message });
       return
     }
@@ -52,5 +52,16 @@ export const validateBudgetInput = async (req: Request, res: Response, next: Nex
     .isNumeric().withMessage('El monto del presupuesto debe ser un número')
     .custom(value => value > 0).withMessage('El monto del presupuesto debe ser mayor a 0').run(req)
 
+  next()
+}
+// validar buscar todos los presupuestos pero por ID de usuario
+//Ej usuario a = 3 presupuestos, usuario b = 5 presupuestos.
+// usuario a no debe traer 8 presupuestos por eso se realiza
+// este middleare para separar la busqueda de presupuestos pero por ID de usuario
+export const hasAcess = async (req: Request, res: Response, next: NextFunction) => {
+  if( req.budget.userId !== req.user.id ){
+    const error = new Error('Accion no valida')
+    res.status(401).json({error:error.message})
+  }
   next()
 }
