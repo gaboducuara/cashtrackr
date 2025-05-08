@@ -3,6 +3,7 @@ import Budget from '../models/Budget';
 import Expense from '../models/Expense';
 export class BudgetController {
   static getAll = async (req: Request, res: Response) => {
+
     try {
       const budget = await Budget.findAll({
         order: [
@@ -13,10 +14,9 @@ export class BudgetController {
           userId: req.user.id
         }
       })
-      res.status(201).json({ status: 'success', message: 'Trae todos los presupuestos correctamente', data: budget });
+      res.status(201).json(budget);
     } catch (error) {
-      const e = new Error('Existe error en traer todos los presupuestos.')
-      res.status(500).json({ error: e.message });
+      res.status(500).json({ error: 'Existe error en traer todos los presupuestos.' });
       return
     }
   }
