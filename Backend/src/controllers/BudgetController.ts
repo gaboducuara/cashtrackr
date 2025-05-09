@@ -29,26 +29,25 @@ export class BudgetController {
   }
   static create = async (req: Request, res: Response) => {
     try {
-      const budget = new Budget(req.body)
+      const budget = await Budget.create(req.body)
       //Asignacion de presupuesto al usuario logueado correctamente
       budget.userId = req.user.id
       await budget.save();
       res.status(201).json('Presupuesto Creado Correctamente.');
     } catch (error) {
-      const e = new Error('Existe error en la cracion de presupuesto.')
-      res.status(500).json({ error: e.message });
+      res.status(500).json({ error: 'Existe error al crear los presupuestos.' });
       return
     }
   }
   static updateById = async (req: Request, res: Response) => {
     const budGet = req.body
     await req.budget.update(budGet);
-    res.status(200).json({ status: 'success', message: 'Presupuesto actualizado correctamente.', data: budGet });
+    res.status(200).json('Presupuesto actualizado correctamente.');
   }
   static deleteById = async (req: Request, res: Response) => {
     const budGet = req.body
     await req.budget.destroy(budGet);
-    res.status(200).json({ status: 'success', message: 'Presupuesto Eliminado.', data: budGet });
+    res.status(200).json('Presupuesto Eliminado.');
   }
 }
 

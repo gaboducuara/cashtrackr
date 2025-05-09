@@ -1,7 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { body, param, validationResult } from 'express-validator'
 import Budget from '../models/Budget';
-
 declare global {
   namespace Express {
     interface Request {
@@ -60,7 +59,7 @@ export const validateBudgetInput = async (req: Request, res: Response, next: Nex
 // este middleare para separar la busqueda de presupuestos pero por ID de usuario
 export const hasAcess = async (req: Request, res: Response, next: NextFunction) => {
   if( req.budget.userId !== req.user.id ){
-    const error = new Error('Accion no valida')
+    const error = new Error('No tienes permisos para realizar esta accion.')
     res.status(401).json({error:error.message})
   }
   next()

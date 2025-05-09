@@ -151,10 +151,10 @@ Documentacion API
 git commit -m "CRUD de Gastos, Router, Controllers, Validación, Middlewares"
 
 git tag v2.0
-
-
 git push
 
+
+25 -5
 
 
 Se solicitó realizar una app sencilla como ejercicio MERN STACK.  La app  tiene que tener base de datos y  responder peticiones CRUD del cliente
