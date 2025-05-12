@@ -13,7 +13,6 @@ jest.mock('../../../models/Budget', () => ({
 }))
 //Pruebas unitarias
 describe('BudgetController.getAll', () => {
-
   // se Ejecuta antes de que cada TEST arranque
   //EL metodo de "mockImplementation" resuelve el test en base al request que se le envia en el options
   beforeEach(() => {
@@ -23,7 +22,6 @@ describe('BudgetController.getAll', () => {
       return Promise.resolve(updatedBudgets)
     })
   })
-
   it('debe recuperar 2 Presupuestos para el usuario con el id 1', async () => {
     const req = createRequest({
       method: 'GET',
@@ -39,7 +37,6 @@ describe('BudgetController.getAll', () => {
     expect(res.statusCode).toBe(201)
     expect(res.status).not.toBe(404)
   })
-
   it('debe recuperar 1 Presupuesto para el usuario con el id 2', async () => {
     const req = createRequest({
       method: 'GET',
@@ -57,7 +54,6 @@ describe('BudgetController.getAll', () => {
     expect(res.statusCode).toBe(201)
     expect(res.status).not.toBe(404)
   })
-
   it('debe recuperar 0 Presupuesto para el usuario con el id 10', async () => {
     const req = createRequest({
       method: 'GET',
@@ -75,7 +71,6 @@ describe('BudgetController.getAll', () => {
     expect(res.statusCode).toBe(201)
     expect(res.status).not.toBe(404)
   })
-
   it('Gestionar error al obtener presupuestos', async () => {
     const req = createRequest({
       method: 'GET',
@@ -109,9 +104,9 @@ describe('BudgetController.create', () => {
 
     const res = createResponse();
     await BudgetController.create(req, res);
-    const data = res._getJSONData();
+    //Se espera un codigo 201
     expect(res.statusCode).toBe(201);
-    expect(data).toBe('Presupuesto Creado Correctamente.')
+    expect(res._getJSONData()).toBe('Presupuesto Creado Correctamente.')
     /*Prueba para simular que el controlador create realmente guarda algo en la base de datos*/
     expect(mockBudget.save).toHaveBeenCalled(); /*Metodo de Realizacion de llamado toHaveBeenCalled*/
     /*Forma normal para que se mande a llamar una ves y evitar registros duplicados, si se manda a llamar dos veces deberia salir error*/

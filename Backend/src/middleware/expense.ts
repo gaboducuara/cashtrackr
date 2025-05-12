@@ -21,7 +21,6 @@ export const validateExpenseInput = async (req: Request, res: Response, next: Ne
 
   next()
 }
-
 /*Validacion de gastos con ID */
 export const validateExpenseId = async (req: Request, res: Response, next: NextFunction) => {
   await param('expenseId')
@@ -35,7 +34,6 @@ export const validateExpenseId = async (req: Request, res: Response, next: NextF
   }
   next()
 }
-
 /*Validacion de que el gasto exista*/
 export const validateExpenseExists = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -49,7 +47,7 @@ export const validateExpenseExists = async (req: Request, res: Response, next: N
     req.expense = expense
     next()
   } catch (error) {
-    const e = new Error('existe error en el presupuesto.')
+    const e = new Error('existe error en los Gastos.')
     res.status(500).json({ error: e.message });
     return
   }

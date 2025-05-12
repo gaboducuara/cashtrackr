@@ -53,14 +53,14 @@ export const validateBudgetInput = async (req: Request, res: Response, next: Nex
 
   next()
 }
-// validar buscar todos los presupuestos pero por ID de usuario
-//Ej usuario a = 3 presupuestos, usuario b = 5 presupuestos.
+// validar buscar todos los presupuestos pero por ID de usuario; Ej usuario a = 3 presupuestos, usuario b = 5 presupuestos.
 // usuario a no debe traer 8 presupuestos por eso se realiza
 // este middleare para separar la busqueda de presupuestos pero por ID de usuario
-export const hasAcess = async (req: Request, res: Response, next: NextFunction) => {
+export const  hasAcess = (req: Request, res: Response, next: NextFunction) => {
   if( req.budget.userId !== req.user.id ){
     const error = new Error('No tienes permisos para realizar esta accion.')
     res.status(401).json({error:error.message})
+    return
   }
-  next()
+  next();
 }

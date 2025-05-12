@@ -17,7 +17,7 @@ export class AuthController {
       return
     }
     try {
-      const user = new User(req.body)
+      const user = await User.create(req.body)
       //Hash de password
       user.password = await hasPassword(password)
       //generando token
@@ -29,7 +29,7 @@ export class AuthController {
         email: user.email,
         token: user.token
       })
-      res.status(201).json({ status: 'success', message: 'Usuario creado correctamente.', data: user });
+      res.status(201).json('Usuario creado correctamente.');
       return
     } catch (error) {
       const e = new Error('Un usuario con ese email ya esta registrado.')
@@ -161,7 +161,6 @@ export class AuthController {
     await user.save()
     res.json('El password se modifico correctamente')
   }
-
   //Revisar si el password es correcto
   static checkpassword = async (req: Request, res: Response) => {
     const { password} = req.body
