@@ -85,7 +85,7 @@ export class AuthController {
     }
     // Generar token de acceso
     const token = generateJWT(user.id)
-    res.json(token)
+    res.status(200).json(token)
   }
   //forgot-password, Contraseña Olvidada
   static forgotPassword = async (req: Request, res: Response) => {
@@ -140,7 +140,6 @@ export class AuthController {
     res.json('El password se modifico correctamente')
 
   }
-
   static user = async (req: Request, res: Response) => {
     res.json(req.user)
   }
