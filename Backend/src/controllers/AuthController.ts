@@ -12,8 +12,8 @@ export class AuthController {
     const userExists = await User.findOne({ where: { email } })
 
     if (userExists) {
-      const e = new Error('Un usuario con ese email ya esta registrado.')
-      res.status(409).json({ error: e.message });
+      const error = new Error('Un usuario con ese email ya esta registrado.')
+      res.status(409).json({ error: error.message });
       return
     }
     try {

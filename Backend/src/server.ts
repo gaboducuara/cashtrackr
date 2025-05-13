@@ -5,13 +5,13 @@ import { db } from './config/db'
 import budgetRouter from './routes/budgetRouter'
 import authRouter from './routes/authRouter'
 
-async function connectDB() {
+export async function connectDB() {
   try {
     await db.authenticate()
     db.sync()
-    console.log(colors.blue.bold('Conexion exitosa a la base de datos'))
+    // console.log(colors.blue.bold('Conexion exitosa a la base de datos'))
   } catch (error) {
-    console.error(colors.red.bold('Fallo la Conexion a la base de datos'), error)
+    // console.error(colors.red.bold('Fallo la Conexion a la base de datos'), error)
     process.exit(1)
   }
 }
@@ -26,5 +26,9 @@ app.use(express.json())
 
 app.use('/api/budget', budgetRouter)
 app.use('/api/auth', authRouter)
+
+app.use('/', (req, res) => {
+  res.send('Todo Bien...')
+})
 
 export default app
