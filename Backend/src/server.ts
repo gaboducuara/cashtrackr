@@ -27,6 +27,7 @@ app.use(express.json())
 app.use('/api/budget', budgetRouter)
 app.use('/api/auth', authRouter)
 
+console.log(process.env.NODE_ENV)
 app.use('/', (req, res) => {
   res.send('Todo Bien...')
 })

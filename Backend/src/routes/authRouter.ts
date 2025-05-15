@@ -15,12 +15,10 @@ router.post('/create-account',
   body('email').isEmail().withMessage('El email no es valido.'),
   handleInputErrors,
   AuthController.createAccount)
-
 /*Confirmacion de cuenta*/
 /*Se envia un token al email del usuario para confirmar la cuenta*/
 router.post('/confirm-account',
   body('token')
-    .notEmpty()
     .isLength({ min: 6, max: 6 })
     .withMessage('El token no es Valido.'),
   handleInputErrors,
@@ -79,7 +77,6 @@ router.post('/check-password',
   handleInputErrors,
   AuthController.checkpassword
 )
-
 export default router
 
 

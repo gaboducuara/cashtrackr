@@ -21,7 +21,13 @@ export class AuthController {
       //Hash de password
       user.password = await hasPassword(password)
       //generando token
-      user.token = generateToken()
+      const token = user.token = generateToken()
+      user.token = token
+      /*Objeto Global de node*/
+      if (process.env.NODE_ENV !== 'production') {
+        globalThis.cashTrackrConfirmationToken = token
+      }
+
       await user.save()
       // Envio de email
       await AuthEmail.sendConfirmationEmail({
@@ -143,14 +149,14 @@ export class AuthController {
   static user = async (req: Request, res: Response) => {
     res.json(req.user)
   }
-//usuario quiere cambiar o actualizar la contraseña
+  //usuario quiere cambiar o actualizar la contraseña
   static updateCurrencyUserPassword = async (req: Request, res: Response) => {
-    const {currentPassword, password} = req.body
+    const { currentPassword, password } = req.body
     const { id } = req.user
     const user = await User.findByPk(id)
     //validando si es password actual es correcto
     const isPasswordCorrect = await checkPassword(currentPassword, user.password)
-    if(!isPasswordCorrect){
+    if (!isPasswordCorrect) {
       const e = new Error('El password actual es incorrecto.')
       res.status(404).json({ error: e.message });
       return
@@ -162,13 +168,13 @@ export class AuthController {
   }
   //Revisar si el password es correcto
   static checkpassword = async (req: Request, res: Response) => {
-    const { password} = req.body
+    const { password } = req.body
     const { id } = req.user
 
     const user = await User.findByPk(id)
 
     const isPasswordCorrect = await checkPassword(password, user.password)
-    if(!isPasswordCorrect){
+    if (!isPasswordCorrect) {
       const e = new Error('El password actual es incorrecto.')
       res.status(401).json({ error: e.message });
       return
