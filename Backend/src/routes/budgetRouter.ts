@@ -12,9 +12,9 @@ const router: Router = Router()
 router.use(authenticated)
 
 /*Presupuestos*/
-router.param('budgetId', validateBudgetId)
-router.param('budgetId', validateBudgetExists)
-router.param('budgetId', hasAcess)
+router.param('budgetId', validateBudgetId) /*predice que el id sea valido - ID no valido, debe ser un numero entero*/
+router.param('budgetId', validateBudgetExists) /*Predice que el presupuesto sea encontrado - Presupuesto no ha sido encontrado. */
+router.param('budgetId', hasAcess) /*Predice que el usuario tenga permisos para buscar un presupuestos - No tienes permisos para realizar esta accion. */
 
 /*Gastos*/
 router.param('expenseId', validateExpenseId)

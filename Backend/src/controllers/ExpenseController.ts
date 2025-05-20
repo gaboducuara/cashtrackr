@@ -15,7 +15,7 @@ export class ExpensesController {
   }
   /*traer gasto por Id*/
   static getById = async (req: Request, res: Response) => {
-    // Devuelve el gasto como JSON
+    /*Devuelve el gasto como JSON*/
     res.status(200).json(req.expense);
   }
   static updateById = async (req: Request, res: Response) => {

@@ -3,7 +3,6 @@ import Budget from '../models/Budget';
 import Expense from '../models/Expense';
 export class BudgetController {
   static getAll = async (req: Request, res: Response) => {
-
     try {
       const budget = await Budget.findAll({
         order: [
@@ -21,16 +20,17 @@ export class BudgetController {
     }
   }
   static getById = async (req: Request, res: Response) => {
-    //traer todos los gastos por presupuesto con el metodo include
+    /*traer todos los gastos por presupuesto con el metodo include*/
     const budget = await Budget.findByPk(req.budget.id, {
       include: [Expense],
     })
       res.status(200).json(budget);
+      return
   }
   static create = async (req: Request, res: Response) => {
     try {
       const budget = await Budget.create(req.body)
-      //Asignacion de presupuesto al usuario logueado correctamente
+      /*Asignacion de presupuesto al usuario logueado correctamente*/
       budget.userId = req.user.id
       await budget.save();
       res.status(201).json('Presupuesto Creado Correctamente.');

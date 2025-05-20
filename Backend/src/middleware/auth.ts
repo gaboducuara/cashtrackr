@@ -15,7 +15,7 @@ export const authenticated = async (req: Request, res: Response, next: NextFunct
   const bearer = req.headers.authorization
   if (!bearer) {
     const e = new Error('no Autorizado.')
-    res.status(404).json({ error: e.message });
+    res.status(401).json({ error: e.message });
     return
   }
   const [, token] = bearer.split(' ')
@@ -35,8 +35,6 @@ export const authenticated = async (req: Request, res: Response, next: NextFunct
       next()
     }
   } catch (error) {
-    res.status(500).json({
-      error: 'Token no valido'
-    })
+    res.status(500).json({ error: 'Token no valido'})
   }
 }

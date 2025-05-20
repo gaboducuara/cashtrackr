@@ -57,12 +57,12 @@ router.post('/reset-password/:token',
   handleInputErrors,
   AuthController.resetPasswordWithToken
 )
-//informacion del usuario validando el jsonwebtoken
+/*informacion del usuario validando el jsonwebtoken*/
 router.get('/user',
   authenticated,
   AuthController.user
 )
-//Usuario autenticado quiere cambiar la contraseña
+/*Usuario autenticado quiere cambiar la contraseña*/
 router.post('/update-password',
   authenticated,
   body('currentPassword').notEmpty().withMessage('El password Actual no puede ir vacio'),
@@ -70,7 +70,7 @@ router.post('/update-password',
   handleInputErrors,
   AuthController.updateCurrencyUserPassword
 )
-//Revisar si la contraseña es correcta
+/*Revisar si la contraseña es correcta*/
 router.post('/check-password',
   authenticated,
   body('password').notEmpty().withMessage('El password Actual no puede ir vacio'),

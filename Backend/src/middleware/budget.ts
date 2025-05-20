@@ -12,13 +12,13 @@ declare global {
 /*Validacion de presupuestos por id*/
 export const validateBudgetId = async (req: Request, res: Response, next: NextFunction) => {
   await param('budgetId')
-    .isInt().withMessage('ID no valido, debe ser un numero entero')
-    .custom(value => value > 0).withMessage('ID no valido, El numero entero debe ser mayor a 0')
+    .isInt().withMessage('ID no valido, debe ser un numero entero').bail()
+    .custom(value => value > 0).withMessage('ID no valido, El numero entero debe ser mayor a 0').bail()
     .run(req)
 
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    res.status(422).json({ errors: errors.array() })
+    res.status(400).json({ errors: errors.array() })
     return
   }
 
@@ -37,8 +37,7 @@ export const validateBudgetExists = async (req: Request, res: Response, next: Ne
     req.budget = budget
     next()
   } catch (error) {
-    const e = new Error('existe error en el presupuesto.')
-    res.status(500).json({ error: e.message });
+    res.status(500).json({error: 'existe error en el presupuesto.'})
     return
   }
 }
@@ -53,9 +52,9 @@ export const validateBudgetInput = async (req: Request, res: Response, next: Nex
 
   next()
 }
-// validar buscar todos los presupuestos pero por ID de usuario; Ej usuario a = 3 presupuestos, usuario b = 5 presupuestos.
-// usuario a no debe traer 8 presupuestos por eso se realiza
-// este middleare para separar la busqueda de presupuestos pero por ID de usuario
+/*validar buscar todos los presupuestos pero por ID de usuario; Ej usuario a = 3 presupuestos, usuario b = 5 presupuestos.
+usuario a no debe traer 8 presupuestos por eso se realiza
+este middleare para separar la busqueda de presupuestos pero por ID de usuario*/
 export const  hasAcess = (req: Request, res: Response, next: NextFunction) => {
   if( req.budget.userId !== req.user.id ){
     const error = new Error('No tienes permisos para realizar esta accion.')
