@@ -78,31 +78,3 @@ router.post('/check-password',
   AuthController.checkpassword
 )
 export default router
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// router.param('budgetId', validateBudgetId)
-// router.param('budgetId', validateBudgetExists)
-
-// router.param('expenseId', validateExpenseId)
-// router.param('expenseId', validateExpenseExists)

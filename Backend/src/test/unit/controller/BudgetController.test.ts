@@ -30,7 +30,7 @@ describe('BudgetController.getAll', () => {
     });
 
     const res = createResponse();
-    // lo que se hace es filtrar la busqueda por Id del mock budgets, hacer la busqueda compararlo el id del mock con el parametro que se le pasa
+    /* lo que se hace es filtrar la busqueda por Id del mock budgets, hacer la busqueda compararlo el id del mock con el parametro que se le pasa */
     await BudgetController.getAll(req, res);
     const data = res._getJSONData()
     expect(data).toHaveLength(2)
@@ -171,7 +171,6 @@ describe('BudgetController.getById', () => {
       include: [Expense],
     });
   })
-
   it('debe recuperar un Presupuesto para el id 2 y 2 gastos', async () => {
     const req = createRequest({
       method: 'GET',
@@ -185,7 +184,6 @@ describe('BudgetController.getById', () => {
     /*toHaveLength -> sirve para saber cuantos elementos existen en un arreglo*/
     expect(data.expenses).toHaveLength(2);
   })
-
   it('debe recuperar un Presupuesto para el id 2 y 2 gastos', async () => {
     const req = createRequest({
       method: 'GET',

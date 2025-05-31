@@ -1,6 +1,6 @@
 "use client";
 
-export default function RegisterPage(){
+export default function RegisterForm(){
   return (
           <form
         className="mt-14 space-y-5"

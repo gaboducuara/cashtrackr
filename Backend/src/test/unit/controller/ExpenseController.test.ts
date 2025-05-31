@@ -64,7 +64,6 @@ describe('ExpensesController.create', () => {
     expect(Expense.create).toHaveBeenCalledWith(req.body);
   })
 })
-
 describe('ExpensesController.getById', () => {
   it('Deberia traer los gastos con ID 1', async () => {
     const req = createRequest({
@@ -82,7 +81,6 @@ describe('ExpensesController.getById', () => {
     expect(data).toEqual(expenses[0]);
   })
 })
-
 describe('ExpensesController.updateById', () => {
   it('Deberia Actualizar gastos', async () => {
 
@@ -113,7 +111,6 @@ describe('ExpensesController.updateById', () => {
     expect(expenseMock.update).toHaveBeenCalledTimes(1)
   })
 })
-
 describe('ExpensesController.deleteById', () => {
   it('Deberia Eliminar gastos', async () => {
 
