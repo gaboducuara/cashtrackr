@@ -10,7 +10,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
-    --foreground: rgb(17, 17, 17);
+    --foreground: rgb(7, 7, 7);
   }
 }
 
@@ -37,10 +37,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

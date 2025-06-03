@@ -12,7 +12,7 @@ export class AuthController {
     const userExists = await User.findOne({ where: { email } })
     /*Prevenir Usuarios Duplicados*/
     if (userExists) {
-      const error = new Error('Un usuario con ese email ya esta registrado.')
+      const error = new Error('Usuario con ese email ya esta registrado.')
       res.status(409).json({ error: error.message });
       return
     }
@@ -34,7 +34,7 @@ export class AuthController {
         email: user.email,
         token: user.token
       })
-      res.status(201).json('Usuario creado correctamente.');
+      res.status(201).json('Cuenta creada correctamente.');
       return
     } catch (error) {
       res.status(500).json({ error: 'Error en la creacion de usuario.' });
