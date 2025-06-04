@@ -95,7 +95,7 @@ describe('Authentication - Account Confirmation with Token', () => {
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('errors');
     expect(response.body.errors).toHaveLength(1);
-    expect(response.body.errors[0].msg).toBe('El token no es Valido.')
+    expect(response.body.errors[0].msg).toBe('token no es Valido.')
   })
   it('debe mostrar error si el token no existe', async () => {
     const response = await request(app)
@@ -106,7 +106,7 @@ describe('Authentication - Account Confirmation with Token', () => {
 
     expect(response.status).toBe(401)
     expect(response.body).toHaveProperty('error')
-    expect(response.body.error).toBe('El token no es Valido.')
+    expect(response.body.error).toBe('token no es Valido.')
     expect(response.status).not.toBe(200)
   })
   it('debe confirmar la cuenta con un token válido', async () => {

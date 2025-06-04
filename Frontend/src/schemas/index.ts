@@ -18,6 +18,8 @@ export const RegisterSchema = z.object({
 
 //Schema para validar el success
 export const SuccessSchema = z.string()
+//Schema por si existen errores en el Token
 export const ErrorResponseSchema = z.object({
   error: z.string()
 })
+export const TokenSchema = z.string({message:'Token no valido.'}).length(6, {message: 'El token debe tener 6 caracteres.'})

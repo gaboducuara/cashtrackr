@@ -20,7 +20,7 @@ router.post('/create-account',
 router.post('/confirm-account',
   body('token')
     .isLength({ min: 6, max: 6 })
-    .withMessage('El token no es Valido.'),
+    .withMessage('token no es Valido.'),
   handleInputErrors,
   AuthController.ConfirmedAccount
 )

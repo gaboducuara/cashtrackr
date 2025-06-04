@@ -49,7 +49,7 @@ export class AuthController {
     try {
       const user = await User.findOne({ where: { token } })
       if (!user) {
-        const e = new Error('El token no es Valido.')
+        const e = new Error('token no es Valido.')
         res.status(401).json({ error: e.message });
         return
       }

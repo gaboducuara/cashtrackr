@@ -9,8 +9,8 @@ export const medatada: Metadata = {
 export default function ForgotPasswordPage() {
       return (
             <>
-                  <h1 className="font-black text-6xl text-purple-950">Olvidaste tu contraseña?</h1>
-                  <p className="text-3xl font-bold">aquí puedes <span className="text-amber-500"> Reestablecerla</span></p>
+                  <h1 className="font-black text-6xl text-purple-950">Confirma tu Cuenta</h1>
+                  <p className="text-3xl font-bold">Ingresa el Codigo que Recibiste<span className="text-amber-500"> Por Email </span></p>
                   {/* Formulario de olvido de contraseña*/}
                   <ForgotPasswordForm />
                   {/* de esta forma se puede redireccionar de la pagina de olvidaste tu Contraseña hacia login */}

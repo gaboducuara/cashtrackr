@@ -1,7 +1,7 @@
 "use client";
 
-import { register } from '../../../actions/create-account-actions';;
 import { useActionState } from 'react';
+import { register } from '../../../actions/create-account-actions';;
 import ErrorMessage from '../ui/ErrorMessage';
 import SuccessMessage from '../ui/SuccessMessage';
 
