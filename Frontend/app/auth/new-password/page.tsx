@@ -1,5 +1,5 @@
 export default function NewPasswordPage() {
   return (
-    <div></div>
+    <div>new-password</div>
   )
 }

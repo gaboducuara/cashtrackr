@@ -47,7 +47,7 @@ router.post('/validate-token',
   AuthController.validateToken
 )
 /*Validar token y validar password*/
-router.post('/reset-password/:token',
+router.post('/new-password/:token',
   param('token')
     .notEmpty()
     .isLength({ min: 6, max: 6 })

@@ -1,12 +1,11 @@
 "use server"
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { ErrorResponseSchema, LoginSchema } from '../src/schemas/index';
-
 type ActionStateType = {
   errors: string[]
 }
-
 export async function authenticate(prevState: ActionStateType, formData: FormData) {
   // Credenciales de email y password para el login
   const loginCredentials = {
@@ -43,19 +42,13 @@ export async function authenticate(prevState: ActionStateType, formData: FormDat
   }
 
   // Setear Cookies
-const cookieStore = await cookies();
-cookieStore.set({
+  const cookieStore = await cookies();
+  cookieStore.set({
     name: 'CASHTRACKR_TOKEN',
     value: json,
     httpOnly: true,
     path: '/'
 });
 
-  // redirect('/admin')
-
-
-  //Retornar el Arreglo Vacio
-  return {
-    errors: []
-  }
+  redirect('/admin')
 }
