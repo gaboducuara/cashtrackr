@@ -124,7 +124,7 @@ export class AuthController {
       res.status(404).json({ error: e.message });
       return
     }
-    res.json('Token valido...')
+    res.json('Token valido, Asigna una nueva contraseña.')
   }
   /*Validar token y validar password y volver a hasheard*/
   static resetPasswordWithToken = async (req: Request, res: Response) => {
@@ -142,7 +142,7 @@ export class AuthController {
     /*invalidando token para que el usuario no vuelva a usarlo*/
     user.token = null
     await user.save()
-    res.status(200).json('El password se modifico correctamente')
+    res.status(200).json('La contraseña se modifico correctamente.')
     return
   }
   static user = async (req: Request, res: Response) => {
@@ -163,7 +163,7 @@ export class AuthController {
     /*si pasa la validacion es decir "isPasswordCorrect" aca se debe hashear de nuevo la contraseña*/
     user.password = await hasPassword(password)
     await user.save()
-    res.json('El password se modifico correctamente')
+    res.json('La contraseña se modifico correctamente.')
     return
   }
   /*Revisar si el password es correcto*/

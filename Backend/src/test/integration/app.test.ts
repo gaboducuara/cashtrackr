@@ -82,7 +82,7 @@ describe('Authenticacion - Create Account', () => {
 
     expect(response.status).toBe(409);
     expect(response.body).toHaveProperty('error')
-    expect(response.body.error).toBe('Un usuario con ese email ya esta registrado.');
+    expect(response.body.error).toBe('Usuario con ese email ya esta registrado.');
     expect(response.status).not.toBe(400);
     expect(response.status).not.toBe(201);
     expect(response.body).not.toHaveProperty('errors');
