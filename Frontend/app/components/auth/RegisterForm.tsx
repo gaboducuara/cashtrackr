@@ -12,8 +12,6 @@ export default function RegisterForm(){
     success:''
   })
 
-  console.log(state);
-
   return (
           <form
         className="mt-14 space-y-5"
@@ -52,7 +50,7 @@ export default function RegisterForm(){
         <div className="flex flex-col gap-2">
           <label
             className="font-bold text-2xl"
-          >Password</label>
+          >Contraseña</label>
           <input
             type="password"
             placeholder="Password de Registro"
@@ -64,7 +62,7 @@ export default function RegisterForm(){
         <div className="flex flex-col gap-2">
           <label
             className="font-bold text-2xl"
-          >Repetir Password</label>
+          >Repetir Contraseña</label>
           <input
             id="password_confirmation"
             type="password"

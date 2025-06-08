@@ -22,7 +22,6 @@ export const verifySession = cache( async () => {
 
   const session = await req.json()
   const result = UserSchema.safeParse(session)
-  console.log(result)
   // si no se cumple la validacion se retorna a /auth/login
   if (!result.success) {
     redirect('/auth/login')

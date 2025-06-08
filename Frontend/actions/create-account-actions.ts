@@ -49,7 +49,6 @@ export async function register(prevState: ActionStateType, formData: FormData) {
   }
 
   const success = SuccessSchema.parse(json)
-  console.log(success)
   return {
     errors: [],
     success

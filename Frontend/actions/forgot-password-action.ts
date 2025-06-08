@@ -42,7 +42,6 @@ export async function forgotPassword(prevState: ActionStateType, formData: FormD
         }
     }
     const success = SuccessSchema.parse(json)
-    console.log(success)
 
     return {
         errors: [],

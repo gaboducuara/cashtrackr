@@ -47,6 +47,15 @@ export const ResetPasswordSchema = z.object({
   path: ["password_confirmation"]
 });
 
+//Schema sobre Presupuesto
+export const DraftBudgetSchema = z.object({
+  name: z.string()
+    .min(1, { message: 'El Nombre del presupuesto es obligatorio' }),
+  amount: z.coerce.
+    number({ message: 'Cantidad no válida' })
+    .min(1, { message: 'Cantidad no válida' }),
+})
+
 //Schema para validar el success
 export const SuccessSchema = z.string()
 
@@ -74,6 +83,7 @@ export const BudgetAPIResponseSchema = z.object({
   expenses: z.array(ExpenseAPIResponseSchema)
 })
 export const BudgetsAPIResponseSchema = z.array(BudgetAPIResponseSchema.omit({ expenses: true }))
+
 export type User = z.infer<typeof UserSchema>
 export type Budget = z.infer<typeof BudgetAPIResponseSchema>
 // export type DraftExpense = z.infer<typeof DraftExpenseSchema>

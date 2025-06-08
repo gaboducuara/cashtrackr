@@ -43,6 +43,7 @@ export async function resetPassword(token: string, prevState: ActionStateType, f
   }
 
   const success = SuccessSchema.parse(json)
+  
   return {
     errors: [],
     success
