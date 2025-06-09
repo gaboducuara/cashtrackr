@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/react"
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"
 import { Budget } from "../../../src/schemas/index";
-
-export default function BudgetMenu({budgetId} : {budgetId : Budget['id']}) {
+export default function BudgetMenu({ budgetId }: { budgetId: Budget['id'] }) {
   const router = useRouter()
 
   return (
@@ -28,7 +27,7 @@ export default function BudgetMenu({budgetId} : {budgetId : Budget['id']}) {
           <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
             <MenuItem>
               <Link
-                href={`/admin/budgets/${budgetId}`}
+                href={`/admin/budget/${budgetId}`}
                 className='block px-3 py-1 text-sm leading-6 text-gray-900'
               >
                 Ver Presupuesto
@@ -36,7 +35,7 @@ export default function BudgetMenu({budgetId} : {budgetId : Budget['id']}) {
             </MenuItem>
             <MenuItem>
               <Link
-                href={`/admin/budgets/${budgetId}/edit`}
+                href={`/admin/budget/${budgetId}/edit`}
                 className='block px-3 py-1 text-sm leading-6 text-gray-900'
               >
                 Editar Presupuesto
@@ -46,7 +45,7 @@ export default function BudgetMenu({budgetId} : {budgetId : Budget['id']}) {
               <button
                 type='button'
                 className='block px-3 py-1 text-sm leading-6 text-red-500'
-                onClick={ () => router.push(`?deleteBudgetId=${budgetId}`) }
+                onClick={() => router.push(`?deleteBudgetId=${budgetId}`)}
               >
                 Eliminar Presupuesto
               </button>

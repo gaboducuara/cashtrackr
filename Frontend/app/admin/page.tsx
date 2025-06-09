@@ -1,30 +1,37 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
 import BudgetMenu from '../components/budget/BudgetMenu';
 import getToken from '../../src/auth/token';
 import { formatCurrency, formatDate } from '../../src/utils/index';
 import { BudgetsAPIResponseSchema } from '../../src/schemas/index';
-import type { Metadata } from 'next';
-import Link from 'next/link';
+
+//El Metadata sirve para hacer dinamismo en titulos
 export const metadata: Metadata = {
   title: 'CashTrackr - Panel de Administración',
   description: 'CashTrackr - Panel de Administración'
 }
-
 async function getUserBudgets() {
   const token = getToken()
   const url = `${process.env.API_URL}/budget`
-  const req = await fetch(url, {
+
+  try {
+    const req = await fetch(url, {
     headers: {
       'Authorization': `Bearer ${token}`
     },
     next: {
-      tags: ['all-budgets']
+      tags: ['all-budget']
     }
   })
   const json = await req.json()
   const budgets = BudgetsAPIResponseSchema.parse(json)
   return budgets
+} catch(error){
+  console.log(error)
+  throw Error
 }
-
+}
 export default async function AdminPage() {
 
   const budgets = await getUserBudgets()

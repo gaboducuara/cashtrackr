@@ -30,7 +30,6 @@ export const ErrorResponseSchema = z.object({
   error: z.string()
 })
 export const TokenSchema = z.string({ message: 'Token no valido.' }).length(6, { message: 'El token debe tener 6 caracteres.' })
-
 export const ForgotPasswordSchema = z.object({
   email: z.string()
     .min(1, { message: 'El Email es Obligatorio' })
@@ -54,6 +53,27 @@ export const DraftBudgetSchema = z.object({
   amount: z.coerce.
     number({ message: 'Cantidad no válida' })
     .min(1, { message: 'Cantidad no válida' }),
+})
+export const PasswordValidationSchema = z.string().min(1, { message: 'Password no válido' })
+export const DraftExpenseSchema = z.object({
+  name: z.string().min(1, { message: 'El nombre del gasto es obligatorio' }),
+  amount: z.coerce.number().min(1, { message: 'Cantidad no válida' })
+})
+export const UpdatePasswordSchema = z.object({
+  current_password: z.string().min(1, { message: 'El Password no puede ir vacio' }),
+  password: z.string()
+    .min(8, { message: 'El Nuevo Password debe ser de al menos 8 caracteres' }),
+  password_confirmation: z.string()
+}).refine((data) => data.password === data.password_confirmation, {
+  message: "Los Passwords no son iguales",
+  path: ["password_confirmation"]
+});
+export const ProfileFormSchema = z.object({
+  name: z.string()
+    .min(1, { message: 'Tu Nombre no puede ir vacio' }),
+  email: z.string()
+    .min(1, { message: 'El Email es Obligatorio' })
+    .email({ message: 'Email no válido' }),
 })
 
 //Schema para validar el success
@@ -86,5 +106,6 @@ export const BudgetsAPIResponseSchema = z.array(BudgetAPIResponseSchema.omit({ e
 
 export type User = z.infer<typeof UserSchema>
 export type Budget = z.infer<typeof BudgetAPIResponseSchema>
-// export type DraftExpense = z.infer<typeof DraftExpenseSchema>
+
+export type DraftExpense = z.infer<typeof DraftExpenseSchema>
 export type Expense = z.infer<typeof ExpenseAPIResponseSchema>
