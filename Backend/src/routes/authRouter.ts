@@ -62,6 +62,11 @@ router.get('/user',
   authenticated,
   AuthController.user
 )
+
+router.put('/user',
+  authenticated,
+  AuthController.updateUser
+)
 /*Usuario autenticado quiere cambiar la contraseña*/
 router.post('/update-password',
   authenticated,

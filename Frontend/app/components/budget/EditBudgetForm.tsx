@@ -8,7 +8,6 @@ import BudgetForm from "./BudgetForm";
 import { Budget } from "../../../src/schemas/index";
 import { editBudget } from "../../../actions/edit-budget-action";
 import ErrorMessage from "../ui/ErrorMessage";
-
 export default function EditBudgetForm({ budget }: { budget: Budget }) {
 
     const router = useRouter()

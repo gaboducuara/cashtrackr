@@ -43,11 +43,11 @@ export default function LoginForm() {
         <div className="flex flex-col gap-2">
           <label
             className="font-bold text-2xl"
-          >Password</label>
+          >password</label>
 
           <input
             type="password"
-            placeholder="Password de Registro"
+            placeholder="password de Registro"
             className="w-full border border-gray-300 p-3 rounded-lg"
             name="password"
           />

@@ -3,7 +3,7 @@ import { hasAcess, validateBudgetExists, validateBudgetId, validateBudgetInput }
 import { BudgetController } from '../controllers/BudgetController';
 import { handleInputErrors } from '../middleware/validation';
 import { ExpensesController } from '../controllers/ExpenseController';
-import { validateExpenseExists, validateExpenseId, validateExpenseInput } from '../middleware/expense';
+import { belongsToBudget ,validateExpenseExists, validateExpenseId, validateExpenseInput } from '../middleware/expense';
 import { authenticated } from '../middleware/auth';
 
 const router: Router = Router()
@@ -19,6 +19,7 @@ router.param('budgetId', hasAcess) /*Predice que el usuario tenga permisos para 
 /*Gastos*/
 router.param('expenseId', validateExpenseId)
 router.param('expenseId', validateExpenseExists)
+router.param('expenseId', belongsToBudget)
 
 /*Router for presupuestos*/
 router.get('/', BudgetController.getAll)

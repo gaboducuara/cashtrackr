@@ -18,16 +18,11 @@ export default function CreateBudgetForm() {
     success: ''
   })
 
+  //De esta forma ya al tener creado un presupuesto se envia a la vista de presupuesto.
   useEffect(() => {
     if (state.success) {
-      toast.success(state.success, {
-        onClose: () => {
-          router.push('/admin')
-        },
-        onClick: () => {
-          router.push('/admin')
-        }
-      })
+      toast.success(state.success)
+      router.push('/admin')
     }
   }, [state, router])
 

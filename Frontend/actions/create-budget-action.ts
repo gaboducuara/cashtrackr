@@ -37,11 +37,9 @@ export async function CreateBudget(prevState: ActionStateType, formData: FormDat
     })
 
     const json = await req.json()
-    console.log(json)
 
     revalidatePath('/admin')
     const success = SuccessSchema.parse(json)
-    console.log(success)
     return {
         errors: [],
         success
