@@ -2,7 +2,6 @@ import { useParams } from 'next/navigation'
 import { useEffect } from "react"
 import { verifySession } from '../../../../../../../src/auth/dal'
 import getToken from '../../../../../../../src/auth/token'
-
 export async function GET( request: Request, {params} : {params: {budgetId: string, expenseId: string }}){
 
   const {id} = useParams()

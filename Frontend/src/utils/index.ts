@@ -4,7 +4,6 @@ export function formatCurrency(quantity: number) {
         currency: 'USD'
     }).format(quantity)
 }
-//Formatear fecha con javaScript
 export function formatDate(isoString: string) {
     const date = new Date(isoString)
 
