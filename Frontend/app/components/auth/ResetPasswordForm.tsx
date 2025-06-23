@@ -1,8 +1,7 @@
 import { useRouter } from "next/navigation"
 import { useActionState, useEffect } from 'react';
 import { toast } from "react-toastify"
-import { resetPassword } from '@/actions/reset-password-action';
-
+import { resetPassword } from '../../../actions/reset-password-action';
 
 export default function ResetPasswordForm({ token }: { token: string }) {
 
@@ -13,7 +12,6 @@ export default function ResetPasswordForm({ token }: { token: string }) {
     errors: [],
     success: ''
   })
-
   useEffect(() => {
     if (state.errors) {
       state.errors.forEach(error => {

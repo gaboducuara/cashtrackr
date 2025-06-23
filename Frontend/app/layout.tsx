@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-// import "react-toastify/dist/ReactToastify.css";
-// import { ToastContainer } from 'react-toastify';
 
 const outfit = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -21,7 +19,6 @@ export default function RootLayout({
         className={outfit.className}
       >
         {children}
-        {/* <ToastContainer /> */}
       </body>
     </html>
   );

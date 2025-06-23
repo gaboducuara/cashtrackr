@@ -7,13 +7,11 @@ type ActionStateType = {
   errors: string[]
 }
 export async function authenticate(prevState: ActionStateType, formData: FormData) {
-  // Credenciales de email y password para el login
   const loginCredentials = {
     email: formData.get('email'),
     password: formData.get('password')
   }
 
-  //Validar el loginCredentials con las validaciones.
   const auth = LoginSchema.safeParse(loginCredentials)
   if (!auth.success) {
     return {
@@ -41,7 +39,6 @@ export async function authenticate(prevState: ActionStateType, formData: FormDat
     }
   }
 
-  // Setear Cookies
   const cookieStore = await cookies();
   cookieStore.set({
     name: 'CASHTRACKR_TOKEN',

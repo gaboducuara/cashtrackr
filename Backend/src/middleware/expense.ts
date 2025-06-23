@@ -21,7 +21,6 @@ export const validateExpenseInput = async (req: Request, res: Response, next: Ne
 
   next()
 }
-/*Validacion de gastos con ID */
 export const validateExpenseId = async (req: Request, res: Response, next: NextFunction) => {
   await param('expenseId')
     .isInt().withMessage('ID no valido, debe ser un numero entero')
@@ -34,7 +33,6 @@ export const validateExpenseId = async (req: Request, res: Response, next: NextF
   }
   next()
 }
-/*Validacion de que el gasto exista*/
 export const validateExpenseExists = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { expenseId } = req.params
@@ -52,7 +50,6 @@ export const validateExpenseExists = async (req: Request, res: Response, next: N
     return
   }
 }
-
 export const belongsToBudget = async (req: Request, res: Response, next: NextFunction) => {
     if(req.budget.id !== req.expense.budgetId) {
         const error = new Error('Acción no válida')

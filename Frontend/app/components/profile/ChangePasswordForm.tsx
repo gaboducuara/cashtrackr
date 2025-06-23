@@ -2,6 +2,7 @@
 
 import { updatePassword } from "../../../actions/update-password-action"
 import ErrorMessage from "../ui/ErrorMessage"
+
 import { useEffect, useRef, useActionState } from "react"
 import { toast } from "react-toastify"
 
@@ -12,7 +13,6 @@ export default function ChangePasswordForm() {
         errors: [],
         success: ''
     })
-
     useEffect(() => {
         if(state.success) {
             toast.success(state.success)

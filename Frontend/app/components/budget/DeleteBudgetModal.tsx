@@ -5,13 +5,11 @@ import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/re
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ConfirmPasswordForm from './ConfirmPasswordForm';
 
-//El metodo useSearchParams sirve para recuperar la URL y con el metodo get, le pasas la URL
 export default function DeleteBudgetModal() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const deleteBudgetId = searchParams.get('deleteBudgetId')
-  console.log(deleteBudgetId)
   const show = deleteBudgetId ? true : false
 
   const hideModal = new URLSearchParams(searchParams.toString())

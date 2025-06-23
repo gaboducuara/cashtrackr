@@ -9,7 +9,6 @@ type ActionStateType = {
     success: string
 }
 
-//Validacion de contraseña, para que sea la contraseña correcta.
 export async function deleteBudget( budgetId: Budget['id'], prevState: ActionStateType, formData: FormData) {
     const currentPassword = PasswordValidationSchema.safeParse(formData.get('password'))
     if(!currentPassword.success) {
@@ -19,7 +18,6 @@ export async function deleteBudget( budgetId: Budget['id'], prevState: ActionSta
         }
     }
 
-    // Comprobar password
     const token = getToken()
     const checkPasswordUrl = `${process.env.API_URL}/auth/check-password`
     const checkPasswordReq = await fetch(checkPasswordUrl, {
@@ -42,7 +40,6 @@ export async function deleteBudget( budgetId: Budget['id'], prevState: ActionSta
         }
     }
 
-    // Eliminar Presupuesto
     const deleteBudgetUrl = `${process.env.API_URL}/budget/${budgetId}`
     const deleteBudgetReq = await fetch(deleteBudgetUrl, {
         method: 'DELETE',

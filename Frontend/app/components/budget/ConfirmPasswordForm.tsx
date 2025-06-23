@@ -1,18 +1,15 @@
-import { useRouter, usePathname, useSearchParams } from "next/navigation"
+import { useEffect, useActionState } from "react"
 import { DialogTitle } from "@headlessui/react"
-import { useActionState } from "react"
-import { deleteBudget } from '../../../actions/delete-budget-action'
-import ErrorMessage from "../ui/ErrorMessage"
-import { useEffect } from "react"
 import { toast } from "react-toastify"
 
+import { useRouter, usePathname, useSearchParams } from "next/navigation"
+import { deleteBudget } from '../../../actions/delete-budget-action'
+import ErrorMessage from "../ui/ErrorMessage"
 export default function ConfirmPasswordForm() {
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
   const budgetId = +searchParams.get('deleteBudgetId')!
-
-  console.log(budgetId)
 
   const closeModal = () => {
     const hideModal = new URLSearchParams(searchParams.toString())

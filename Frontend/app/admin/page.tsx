@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-
 import BudgetMenu from '../components/budget/BudgetMenu';
 import getToken from '../../src/auth/token';
 import { formatCurrency, formatDate } from '../../src/utils/index';
 import { BudgetsAPIResponseSchema } from '../../src/schemas/index';
 import DeleteBudgetModal from '../components/budget/DeleteBudgetModal';
 
-//El Metadata sirve para hacer dinamismo en titulos
 export const metadata: Metadata = {
   title: 'CashTrackr - Panel de Administración',
   description: 'CashTrackr - Panel de Administración'
@@ -29,7 +27,6 @@ async function getUserBudgets() {
     const budgets = BudgetsAPIResponseSchema.parse(json)
     return budgets
   } catch (error) {
-    console.log(error)
     throw Error
   }
 }

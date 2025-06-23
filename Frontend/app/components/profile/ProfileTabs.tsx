@@ -1,7 +1,7 @@
 "use client"
 
-import { FingerPrintIcon, UserIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { FingerPrintIcon, UserIcon } from '@heroicons/react/20/solid'
 import { usePathname, useRouter } from 'next/navigation'
 
 const tabs = [

@@ -1,14 +1,15 @@
 import type { Request, Response } from 'express';
 import Budget from '../models/Budget';
 import Expense from '../models/Expense';
+
 export class BudgetController {
+
   static getAll = async (req: Request, res: Response) => {
     try {
       const budget = await Budget.findAll({
         order: [
           ['createdAt', 'ASC']
         ],
-        //TODO:Filtrar por el usuario autenticado
         where:{
           userId: req.user.id
         }
@@ -19,18 +20,18 @@ export class BudgetController {
       return
     }
   }
+
   static getById = async (req: Request, res: Response) => {
-    /*traer todos los gastos por presupuesto con el metodo include*/
     const budget = await Budget.findByPk(req.budget.id, {
       include: [Expense],
     })
       res.status(200).json(budget);
       return
   }
+
   static create = async (req: Request, res: Response) => {
     try {
       const budget = await Budget.create(req.body)
-      /*Asignacion de presupuesto al usuario logueado correctamente*/
       budget.userId = req.user.id
       await budget.save();
       res.status(201).json('Presupuesto Creado Correctamente.');
@@ -39,11 +40,13 @@ export class BudgetController {
       return
     }
   }
+
   static updateById = async (req: Request, res: Response) => {
     const budGet = req.body
     await req.budget.update(budGet);
     res.status(200).json('Presupuesto actualizado correctamente.');
   }
+
   static deleteById = async (req: Request, res: Response) => {
     const budGet = req.body
     await req.budget.destroy(budGet);

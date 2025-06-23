@@ -7,7 +7,6 @@ type ActionStateType = {
 }
 export async function confirmAccount(token: string, prevState: ActionStateType) {
 
-  // Si el token no es valido, retorna un error
   const confirmToken = TokenSchema.safeParse(token)
   if (!confirmToken.success) {
     return {
@@ -16,7 +15,6 @@ export async function confirmAccount(token: string, prevState: ActionStateType) 
     }
   }
 
-  /*Confirmar el usuario */ /*Peticion*/
   const url = `${process.env.API_URL}/auth/confirm-account`
   const req = await fetch(url, {
     method: 'POST',

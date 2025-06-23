@@ -3,14 +3,11 @@ import { ExpensesController } from '../../../controllers/ExpenseController'
 import Expense from '../../../models/Expense'
 import { expenses } from '../../mocks/expense'
 
-//prueba hacia Gastos
 jest.mock('../../../models/Expense', () => ({
-  /*Simulacion de metodos en Sequelize*/
   findAll: jest.fn(),
   create: jest.fn(),
   findByPk: jest.fn()
 }))
-//Pruebas unitarias
 describe('ExpensesController.create', () => {
   it('Debería Crear un nuevo Gasto y responder con statusCode 201', async () => {
     const expenseMock = {
@@ -28,14 +25,10 @@ describe('ExpensesController.create', () => {
     const res = createResponse();
 
     await ExpensesController.create(req, res)
-    //Se espera un codigo 201
     expect(res.statusCode).toBe(201);
     expect(res._getJSONData()).toBe('Gasto Creado.')
-    /*Prueba para simular que el controlador create realmente guarda algo en la base de datos*/
-    expect(expenseMock.save).toHaveBeenCalled(); /*Metodo de Realizacion de llamado toHaveBeenCalled*/
-    /*Forma normal para que se mande a llamar una ves y evitar registros duplicados, si se manda a llamar dos veces deberia salir error*/
+    expect(expenseMock.save).toHaveBeenCalled();
     expect(expenseMock.save).toHaveBeenCalledTimes(1);
-    /*Un metodo ha sido llamado por un valor en especifico //Expense.create(req.body) -- Probar si Expense.create fue instanciado por req.body*/
     expect(Expense.create).toHaveBeenCalledWith(req.body);
   })
   it('Deberia llegar al catch error y responder con statusCode 500, validar mensaje de error', async () => {
@@ -57,10 +50,8 @@ describe('ExpensesController.create', () => {
     (Expense.create as jest.Mock).mockRejectedValue(new Error)
     await ExpensesController.create(req, res);
     expect(res.statusCode).toBe(500)
-    expect(res._getJSONData()).toEqual({ error: 'Existe error en la creacion de gastos.' }) /*Simulando el error (500)*/
-    /*Esta parte se realiza para no mandar a llamar el metodo save*/
+    expect(res._getJSONData()).toEqual({ error: 'Existe error en la creacion de gastos.' })
     expect(mockExpense.save).not.toHaveBeenCalled();
-    /*Un metodo ha sido llamado por un valor en especifico //Budget.create(req.body) -- Probar si Budget.create fue instanciado por req.body*/
     expect(Expense.create).toHaveBeenCalledWith(req.body);
   })
 })

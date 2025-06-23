@@ -1,15 +1,13 @@
-import { verifySession } from '@/src/auth/dal'
-import getToken from '@/src/auth/token'
 import { useParams } from 'next/navigation'
 import { useEffect } from "react"
+import { verifySession } from '../../../../../../../src/auth/dal'
+import getToken from '../../../../../../../src/auth/token'
 
 export async function GET( request: Request, {params} : {params: {budgetId: string, expenseId: string }}){
 
   const {id} = useParams()
-  console.log(id)
   useEffect(() => {
     const url = `${process.env.NEXT_PUBLIC_URL}/admin/api/budget/8/expenses/1`
-    console.log(url)
   }, [])
 
   await verifySession()
@@ -27,6 +25,5 @@ export async function GET( request: Request, {params} : {params: {budgetId: stri
     return Response.json(json.error, {status: 403})
   }
 
-  console.log(json)
   return Response.json(json)
 }

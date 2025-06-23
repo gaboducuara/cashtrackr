@@ -28,7 +28,6 @@ export default async function editExpense(
         }
     }
 
-    // Actualizar el gasto
     const token = getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}/expenses/${expenseId}`
     const req = await fetch(url, {

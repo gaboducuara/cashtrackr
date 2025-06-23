@@ -1,5 +1,4 @@
 import { Budget } from "../../../src/schemas/index";
-//Esta es la estructura basica de crear presupuesto
 export default function BudgetForm({budget} : {budget?:Budget}) {
     return (
         <>

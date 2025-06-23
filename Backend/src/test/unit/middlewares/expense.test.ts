@@ -1,13 +1,11 @@
 import { createRequest, createResponse } from 'node-mocks-http'
-import {validateExpenseExists } from '../../../middleware/expense'
+import { validateExpenseExists } from '../../../middleware/expense'
 import { expenses } from '../../mocks/expense';
 import Expense from '../../../models/Expense'
 import { hasAcess } from '../../../middleware/budget';
 import { budgets } from '../../mocks/budgets';
 
-//prueba hacia presupuestos
 jest.mock('../../../models/Expense', () => ({
-  /*Simulacion de metodos en Sequelize*/
   findByPk: jest.fn()
 }))
 
@@ -30,54 +28,54 @@ describe('Expenses - Middlewares - validateExpensesExist', () => {
     const next = jest.fn();
 
     await validateExpenseExists(req, res, next)
-    expect(res.statusCode).toBe(404) /*validar el llamado del 404 como error*/
-    expect(res._getJSONData()).toEqual({ error: 'El Id con ese gasto no ha sido encontrado.' }) /*Validar que el mensaje de error sea el correcto*/
-    expect(next).not.toHaveBeenCalled()/*Validar que el metodo next() no se haya mandando a llamar*/
+    expect(res.statusCode).toBe(404)
+    expect(res._getJSONData()).toEqual({ error: 'El Id con ese gasto no ha sido encontrado.' })
+    expect(next).not.toHaveBeenCalled()
   })
 
-  it('debe pasar al siguiente middleware. si pasa correctamente la validacion del presupuesto', async () => {  /*Revisa que un gasto exista*/
+  it('debe pasar al siguiente middleware. si pasa correctamente la validacion del presupuesto', async () => {
     (Expense.findByPk as jest.Mock).mockResolvedValue(expenses[0])
 
     const req = createRequest({
-      params: { expenseId : '1' }
+      params: { expenseId: '1' }
     })
 
     const res = createResponse()
     const next = jest.fn();
 
     await validateExpenseExists(req, res, next)
-    expect(next).toHaveBeenCalled() /*Validar que el llamado del next() sea correcto*/
+    expect(next).toHaveBeenCalled()
     expect(next).toHaveBeenCalledTimes(1)
     expect(req.expense).toEqual(expenses[0])
   })
 
   it('Validar cuando el Gasto cae en un error catch 500', async () => {
-      (Expense.findByPk as jest.Mock).mockRejectedValue(new Error) /*Forzando el error para que se vaya a la parte del catch 500 estamos hablando del middleare validatExpenseExists*/
+    (Expense.findByPk as jest.Mock).mockRejectedValue(new Error)
 
-      const req = createRequest({
-        params: { expenseId: '1' }
-      })
-
-      const res = createResponse()
-      const next = jest.fn();
-
-      await validateExpenseExists(req, res, next)
-
-      expect(next).not.toHaveBeenCalled()
-      expect(res.statusCode).toBe(500) /*validar el llamado del 404 como error*/
-      expect(res._getJSONData()).toEqual({ error: 'existe error en los Gastos.' })
+    const req = createRequest({
+      params: { expenseId: '1' }
     })
+
+    const res = createResponse()
+    const next = jest.fn();
+
+    await validateExpenseExists(req, res, next)
+
+    expect(next).not.toHaveBeenCalled()
+    expect(res.statusCode).toBe(500)
+    expect(res._getJSONData()).toEqual({ error: 'existe error en los Gastos.' })
+  })
 })
 
 describe('Expense Middlewares - hasAcess', () => {
   it('Validar que el usuario No puede agregar gastos a un presupuesto que no tiene acceso ', async () => {
 
     const req = createRequest({
-      method:'POST',
-      url:'/api/budgets/:budgetId/expenses',
+      method: 'POST',
+      url: '/api/budgets/:budgetId/expenses',
       budget: budgets[0],
-      user: {id : 20},
-      body: {name: 'Expense Test', amount: 4500 }
+      user: { id: 20 },
+      body: { name: 'Expense Test', amount: 4500 }
     })
 
     const res = createResponse()
@@ -87,7 +85,7 @@ describe('Expense Middlewares - hasAcess', () => {
 
     const data = res._getJSONData()
     expect(res.statusCode).toBe(401)
-    expect(data).toEqual({error: 'No tienes permisos para realizar esta accion.'})
+    expect(data).toEqual({ error: 'No tienes permisos para realizar esta accion.' })
     expect(next).not.toHaveBeenCalled()
   })
 })

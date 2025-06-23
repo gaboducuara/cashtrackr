@@ -12,13 +12,10 @@ export default function CreateBudgetForm() {
   const router = useRouter()
 
   const [state, dispatch] = useActionState(CreateBudget, {
-    //en caso de errores en zod
     errors: [],
-    //en caso de que se genere correctamente un presupuesto
     success: ''
   })
 
-  //De esta forma ya al tener creado un presupuesto se envia a la vista de presupuesto.
   useEffect(() => {
     if (state.success) {
       toast.success(state.success)
@@ -33,7 +30,6 @@ export default function CreateBudgetForm() {
       action={dispatch}
     >
       {state.errors.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}
-      {/* Estructura de crear presupuesto */}
       <BudgetForm/>
 
       <input

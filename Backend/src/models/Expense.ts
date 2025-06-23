@@ -18,7 +18,6 @@ class Expense extends Model {
   })
   declare amount: number
 
-  /*El gasto le pertenece al presupuesto*/
   @ForeignKey(() => Budget)
   declare budgetId: number
 

@@ -3,8 +3,6 @@ import Link from "next/link"
 import EditBudgetForm from "../../../../components/budget/EditBudgetForm";
 import { getBudget } from "../../../../../src/services/budget"
 
-//El params es importante pasarle cuando, trabajas con routing dinamico.
-//El Metadata sirve para
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const budget = await getBudget(params.id);
   return {

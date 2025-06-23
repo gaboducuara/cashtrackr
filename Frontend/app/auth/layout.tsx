@@ -16,7 +16,6 @@ export default function AuthLayout({
             </Link>
           </div>
         </div>
-        {/* formularios */}
         <div className='p-10 lg:py-28'>
           <div className="max-w-3xl mx-auto">
             {children}

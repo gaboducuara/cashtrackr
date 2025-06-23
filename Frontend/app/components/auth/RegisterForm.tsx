@@ -16,7 +16,6 @@ export default function RegisterForm(){
           <form
         className="mt-14 space-y-5"
         noValidate
-        // register viene del archivo create-account-actions.ts
         action={dispatch}
       >
         {state.errors.map(error => <ErrorMessage key={error}>{error}</ErrorMessage>)}

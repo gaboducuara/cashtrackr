@@ -6,21 +6,15 @@ import { generateToken } from '../../../utils/token'
 import { AuthEmail } from '../../../emails/AuthEmail'
 import { generateJWT } from '../../../utils/jwt'
 
-//prueba hacia presupuestos
-/*Moking automatico*/
 jest.mock('../../../models/User')
 jest.mock('../../../utils/auth')
 jest.mock('../../../utils/token')
 jest.mock('../../../utils/jwt')
-
-//Pruebas unitarias
 describe('AuthController.createAccount', () => {
   beforeEach(() => {
-    jest.resetAllMocks() /*Reinicia todos los mocks antes de cada prueba test*/
+    jest.resetAllMocks()
   })
-  /*Cuando un usuario ya existe en la base de datos*/
   it('Debe retornar un status 409 y retornar un mensaje de error si el correo esta registrado', async () => {
-    //Forzamos de que un usuario si existe en la base de datos
     (User.findOne as jest.Mock).mockResolvedValue(true)
     const req = createRequest({
       method: 'POST',
@@ -38,7 +32,6 @@ describe('AuthController.createAccount', () => {
     expect(User.findOne).toHaveBeenCalled()
     expect(User.findOne).toHaveBeenCalledTimes(1)
   })
-  /*Cuando un usuario no existe en la base de datos*/
   it('simular el hashPassword. usuario debe debe de existir. existir generate token. funcionar el save. simular que se envia el email, tener una respuesta status 200 con su respectivo mensaje', async () => {
     (User.findOne as jest.Mock).mockResolvedValue(null)
     const req = createRequest({
@@ -57,9 +50,9 @@ describe('AuthController.createAccount', () => {
     };
 
     (User.create as jest.Mock).mockResolvedValue(mockUser);
-    (hasPassword as jest.Mock).mockResolvedValue('hashedPassword'); /*mockResolvedValue es para operaciones asincronas*//*Simulacion de un Hash de password*/
-    (generateToken as jest.Mock).mockReturnValue('token123456'); /*mockReturnValue es para operaciones sincronas.*/ /*Validamos la Generacion de Token*/
-    jest.spyOn(AuthEmail, "sendConfirmationEmail").mockImplementation(() => Promise.resolve()); /*Simulacion de envio de email*/ /*es una forma en la que puedes esperar a que se ejecute un codigo y entonces se puede modificar su comportamiento*/
+    (hasPassword as jest.Mock).mockResolvedValue('hashedPassword');
+    (generateToken as jest.Mock).mockReturnValue('token123456');
+    jest.spyOn(AuthEmail, "sendConfirmationEmail").mockImplementation(() => Promise.resolve());
 
     await AuthController.createAccount(req, res);
 
@@ -68,7 +61,7 @@ describe('AuthController.createAccount', () => {
     expect(mockUser.save).toHaveBeenCalled();
     expect(mockUser.password).toBe('hashedPassword');
     expect(mockUser.token).toBe('token123456')
-    expect(res.statusCode).toBe(201); /*Aqui revisa que el llamado sea con user.save() pero se ha utilizado el mockUser*/
+    expect(res.statusCode).toBe(201);
     expect(AuthEmail.sendConfirmationEmail).toHaveBeenCalledWith({
       name: req.body.name,
       email: req.body.email,
@@ -79,7 +72,6 @@ describe('AuthController.createAccount', () => {
 })
 describe('AuthController.Login', () => {
   it('Deberia retornar 404 si el usuario no es encontrado', async () => {
-    //Forzamos de que un usuario si existe en la base de datos
     (User.findOne as jest.Mock).mockResolvedValue(null)
     const req = createRequest({
       method: 'POST',
@@ -95,7 +87,6 @@ describe('AuthController.Login', () => {
     expect(res._getJSONData()).toHaveProperty('error', 'Usuario no encontrado.')
   })
   it('Deberia retornar 403 si la cuenta no ha sido confirmada', async () => {
-    //Forzamos de que un usuario si existe en la base de datos
     (User.findOne as jest.Mock).mockResolvedValue({
       id: 1,
       email: "test@test.com",
@@ -148,7 +139,6 @@ describe('AuthController.Login', () => {
       password: "password",
       confirmed: true
     };
-    //Forzamos de que un usuario si existe en la base de datos
     const req = createRequest({
       method: 'POST',
       url: '/api/auth/login',

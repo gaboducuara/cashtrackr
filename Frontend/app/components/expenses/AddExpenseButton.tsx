@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation"
 
-//Codigo del boton de agregar gasto
 export default function AddExpenseButton() {
 
     const router = useRouter()

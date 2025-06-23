@@ -6,7 +6,7 @@ import { limiter } from '../config/limiter'
 import { authenticated } from '../middleware/auth'
 
 const router: Router = Router()
-/*limitar la cantidad de peticiones login que puede hacer una persona*/
+
 router.use(limiter)
 
 router.post('/create-account',
@@ -15,8 +15,7 @@ router.post('/create-account',
   body('email').isEmail().withMessage('El email no es valido.'),
   handleInputErrors,
   AuthController.createAccount)
-/*Confirmacion de cuenta*/
-/*Se envia un token al email del usuario para confirmar la cuenta*/
+
 router.post('/confirm-account',
   body('token')
     .isLength({ min: 6, max: 6 })
@@ -24,20 +23,20 @@ router.post('/confirm-account',
   handleInputErrors,
   AuthController.ConfirmedAccount
 )
-/*Login*/
+
 router.post('/login',
   body('email').isEmail().withMessage('El email no es valido.'),
   body('password').notEmpty().withMessage('El password es obligatorio.'),
   handleInputErrors,
   AuthController.Login
 )
-/*Password Olvidado*/
+
 router.post('/forgot-password',
   body('email').isEmail().withMessage('El email no es valido.'),
   handleInputErrors,
   AuthController.forgotPassword
 )
-/*validate Token */
+
 router.post('/validate-token',
   body('token')
     .notEmpty()
@@ -46,7 +45,7 @@ router.post('/validate-token',
   handleInputErrors,
   AuthController.validateToken
 )
-/*Validar token y validar password*/
+
 router.post('/new-password/:token',
   param('token')
     .notEmpty()
@@ -57,7 +56,7 @@ router.post('/new-password/:token',
   handleInputErrors,
   AuthController.resetPasswordWithToken
 )
-/*informacion del usuario validando el jsonwebtoken*/
+
 router.get('/user',
   authenticated,
   AuthController.user
@@ -67,7 +66,7 @@ router.put('/user',
   authenticated,
   AuthController.updateUser
 )
-/*Usuario autenticado quiere cambiar la contraseña*/
+
 router.post('/update-password',
   authenticated,
   body('currentPassword').notEmpty().withMessage('El password Actual no puede ir vacio'),
@@ -75,7 +74,7 @@ router.post('/update-password',
   handleInputErrors,
   AuthController.updateCurrencyUserPassword
 )
-/*Revisar si la contraseña es correcta*/
+
 router.post('/check-password',
   authenticated,
   body('password').notEmpty().withMessage('El password Actual no puede ir vacio'),

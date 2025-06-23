@@ -1,4 +1,4 @@
-import { Table, Model, Column, DataType, HasMany, Default, Unique, AllowNull,  BelongsTo, ForeignKey } from 'sequelize-typescript'
+import { Table, Model, Column, DataType, HasMany, Default, Unique, AllowNull } from 'sequelize-typescript'
 import Budget from './Budget'
 @Table({
   tableName: 'users',
@@ -29,13 +29,12 @@ class User extends Model {
   })
   declare token: string
 
-  @Default(false) /*el usuario no puede loguearse a menos que se confirme el token*/
+  @Default(false)
   @Column({
     type: DataType.BOOLEAN,
   })
   declare confirmed: boolean
 
-  /*Un usuario a muchos presupuestos*/
   @HasMany(() => Budget, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',

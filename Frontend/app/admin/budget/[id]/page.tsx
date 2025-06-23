@@ -7,10 +7,7 @@ import Amount from "../../../components/ui/Amount";
 import ModalContainer from "../../../components/ui/ModalContainer";
 import { getBudget } from "../../../../src/services/budget";
 import { formatCurrency, formatDate } from "../../../../src/utils/index";
-
-// Esta parte del codigo sirve para generar el nombre de la seccion dinamicamente, en la pestaña.
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata>
-{
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const budget = await getBudget(params.id)
     return {
         title: `CashTrackr - ${budget.name}`,

@@ -8,28 +8,22 @@ import { authenticated } from '../middleware/auth';
 
 const router: Router = Router()
 
-/*para que un usuario crear y realizar presupuestos debe estar autenticado*/
 router.use(authenticated)
 
-/*Presupuestos*/
-router.param('budgetId', validateBudgetId) /*predice que el id sea valido - ID no valido, debe ser un numero entero*/
-router.param('budgetId', validateBudgetExists) /*Predice que el presupuesto sea encontrado - Presupuesto no ha sido encontrado. */
-router.param('budgetId', hasAcess) /*Predice que el usuario tenga permisos para buscar un presupuestos - No tienes permisos para realizar esta accion. */
-
-/*Gastos*/
+router.param('budgetId', validateBudgetId)
+router.param('budgetId', validateBudgetExists)
+router.param('budgetId', hasAcess)
 router.param('expenseId', validateExpenseId)
 router.param('expenseId', validateExpenseExists)
 router.param('expenseId', belongsToBudget)
 
-/*Router for presupuestos*/
 router.get('/', BudgetController.getAll)
 router.post('/', validateBudgetInput, handleInputErrors, BudgetController.create)
-router.get('/:budgetId', BudgetController.getById) /*Se Trae un presupuesto por su id y asu vez todos los gatos*/
+router.get('/:budgetId', BudgetController.getById)
 router.put('/:budgetId', validateBudgetInput, handleInputErrors, BudgetController.updateById)
 router.delete('/:budgetId', BudgetController.deleteById)
 
-/*Router for Gastos*/
-router.post('/:budgetId/expenses', validateExpenseInput, handleInputErrors,ExpensesController.create) /*Se crea gasto y hay que pasarle a que presupuesto es asignado*/
+router.post('/:budgetId/expenses', validateExpenseInput, handleInputErrors,ExpensesController.create)
 router.get('/:budgetId/expenses/:expenseId', ExpensesController.getById)
 router.put('/:budgetId/expenses/:expenseId', validateExpenseInput, handleInputErrors ,ExpensesController.updateById)
 router.delete('/:budgetId/expenses/:expenseId', ExpensesController.deleteById)

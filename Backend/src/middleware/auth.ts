@@ -9,9 +9,9 @@ declare global {
     }
   }
 }
-//validar que el usuario este autenticado
+
 export const authenticated = async (req: Request, res: Response, next: NextFunction) => {
-  //validacion de bearer
+
   const bearer = req.headers.authorization
   if (!bearer) {
     const e = new Error('no Autorizado.')
@@ -19,13 +19,13 @@ export const authenticated = async (req: Request, res: Response, next: NextFunct
     return
   }
   const [, token] = bearer.split(' ')
-  //validacion de token
+
   if (!token) {
     const e = new Error('token no encontrado.')
     res.status(404).json({ error: e.message });
     return
   }
-  // Verificacion del Token
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     if (typeof decoded === 'object' && decoded.id) {
@@ -35,6 +35,6 @@ export const authenticated = async (req: Request, res: Response, next: NextFunct
       next()
     }
   } catch (error) {
-    res.status(500).json({ error: 'Token no valido'})
+    res.status(500).json({ error: 'Token no valido' })
   }
 }

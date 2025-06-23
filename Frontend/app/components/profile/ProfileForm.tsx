@@ -1,10 +1,11 @@
 "use client"
 
+import { useEffect , useActionState} from "react"
+import { toast } from "react-toastify"
+
 import { updateUser } from "../../../actions/update-user-action"
 import {User} from '../../../src/schemas'
 import ErrorMessage from "../ui/ErrorMessage"
-import { useEffect , useActionState} from "react"
-import { toast } from "react-toastify"
 
 export default function ProfileForm({user} : {user: User}) {
 

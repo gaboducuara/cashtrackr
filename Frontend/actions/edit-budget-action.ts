@@ -24,7 +24,6 @@ export async function editBudget(budgetId: Budget['id'], prevState: ActionStateT
         }
     }
 
-    // Peticion para Actualizar este presupuesto
     const token = getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}`
     const req = await fetch(url, {
@@ -40,7 +39,6 @@ export async function editBudget(budgetId: Budget['id'], prevState: ActionStateT
     })
 
     const json = await req.json()
-    // Si la peticion no fue exitosa, se retorna el error
     if (!req.ok) {
         const { error } = ErrorResponseSchema.parse(json)
         return {

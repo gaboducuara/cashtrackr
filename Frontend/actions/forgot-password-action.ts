@@ -1,15 +1,12 @@
 "use server"
 
-import { ErrorResponseSchema, ForgotPasswordSchema, SuccessSchema } from "@/src/schemas"
-
+import { ErrorResponseSchema, ForgotPasswordSchema, SuccessSchema } from "../src/schemas"
 type ActionStateType = {
     errors: string[]
     success: string
 }
 
-
 export async function forgotPassword(prevState: ActionStateType, formData: FormData) {
-
 
     const forgotPassword = ForgotPasswordSchema.safeParse({
         email: formData.get('email')

@@ -4,8 +4,7 @@ import { useState, useActionState, useEffect, startTransition } from 'react';
 import { PinInput, PinInputField } from '@chakra-ui/pin-input'
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
-import { confirmAccount } from '@/actions/confirm-account-actions';
-
+import { confirmAccount } from '../../../actions/confirm-account-actions';
 export default function ConfirmAccountForm() {
 
   const router = useRouter();
@@ -17,7 +16,6 @@ export default function ConfirmAccountForm() {
     success: ''
   })
 
-  //useEffect que esta al pendiente de los cambios que ocurran euseEffect
   useEffect(() => {
     if (isComplete) {
       startTransition(() => {
@@ -25,16 +23,12 @@ export default function ConfirmAccountForm() {
       });
     }
   }, [isComplete]);
-
-
   useEffect(() => {
-  //Toast de error
     if (state.errors) {
       state.errors.forEach(error => {
         toast.error(error)
       })
     }
-  //Toast Correcto
     if(state.success){
       toast.success(state.success, {
         onClose: () => {

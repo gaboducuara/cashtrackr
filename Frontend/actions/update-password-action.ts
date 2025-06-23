@@ -2,14 +2,11 @@
 
 import getToken from "../src/auth/token"
 import { ErrorResponseSchema, SuccessSchema, UpdatePasswordSchema } from "../src/schemas"
-
 type ActionStateType = {
     errors: string[]
     success: string
 }
-
 export async function updatePassword(prevState: ActionStateType, formData: FormData) {
-    console.log(formData)
     const userPassword = UpdatePasswordSchema.safeParse({
         currentPassword: formData.get('currentPassword'),
         password: formData.get('password'),
@@ -38,7 +35,6 @@ export async function updatePassword(prevState: ActionStateType, formData: FormD
     })
 
     const json = await req.json()
-    console.log(json)
     if(!req.ok) {
         const { error } = ErrorResponseSchema.parse(json)
         return {
