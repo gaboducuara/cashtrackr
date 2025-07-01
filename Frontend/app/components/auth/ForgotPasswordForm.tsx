@@ -1,9 +1,10 @@
 "use client"
 
-import { forgotPassword } from '../../../actions/forgot-password-action'
-import { useEffect } from "react"
-import { useActionState } from "react"
-import { toast } from "react-toastify"
+import { useEffect } from "react";
+import { useActionState } from "react";
+import { toast } from "react-toastify";
+
+import { forgotPassword } from '@/actions/forgot-password-action';
 export default function ForgotPasswordForm() {
 
   const [state, dispatch] = useActionState(forgotPassword, {

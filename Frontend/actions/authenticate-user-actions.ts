@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { ErrorResponseSchema, LoginSchema } from '../src/schemas/index';
+import { ErrorResponseSchema, LoginSchema } from '@/src/schemas/index';
 type ActionStateType = {
   errors: string[]
 }

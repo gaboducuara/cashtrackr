@@ -4,14 +4,16 @@ import { cache } from 'react'
 import { redirect } from "next/navigation"
 import getToken from './token'
 import { UserSchema } from '../schemas'
+
 export const verifySession = cache( async () => {
 
-  const token = getToken()
+  const token = await getToken()
   if(!token) {
       redirect('/auth/login')
   }
 
   const url = `${process.env.API_URL}/auth/user`
+  console.log(url)
   const req = await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`

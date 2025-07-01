@@ -1,7 +1,7 @@
 "use server"
 
-import getToken from "../src/auth/token"
-import { Budget, ErrorResponseSchema, PasswordValidationSchema, SuccessSchema } from "../src/schemas/index"
+import getToken from "@/src/auth/token"
+import { Budget, ErrorResponseSchema, PasswordValidationSchema, SuccessSchema } from "@/src/schemas/index"
 import { revalidatePath } from "next/cache"
 
 type ActionStateType = {
@@ -18,7 +18,7 @@ export async function deleteBudget( budgetId: Budget['id'], prevState: ActionSta
         }
     }
 
-    const token = getToken()
+    const token = await getToken()
     const checkPasswordUrl = `${process.env.API_URL}/auth/check-password`
     const checkPasswordReq = await fetch(checkPasswordUrl, {
         method: 'POST',

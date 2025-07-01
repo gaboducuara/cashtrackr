@@ -1,16 +1,15 @@
-import ProfileTabs from "../../components/profile/ProfileTabs";
-import ToastNotification from "../../components/ui/ToastNotification";
+import ProfileTabs from '@/app/components/profile/ProfileTabs';
+import ClientWrapper from '@/app/components/ui/ClientWrapper';
 
 export default async function ProfileLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-        <ProfileTabs />
+      <ProfileTabs />
+      <ClientWrapper>
         {children}
-        <ToastNotification />
+      </ClientWrapper>
     </>
   );
 }

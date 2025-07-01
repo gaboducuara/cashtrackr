@@ -1,19 +1,26 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import EditBudgetForm from "../../../../components/budget/EditBudgetForm";
-import { getBudget } from "../../../../../src/services/budget"
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const budget = await getBudget(params.id);
+import EditBudgetForm from '@/app/components/budget/EditBudgetForm';
+import { getBudget } from '@/src/services/budget';
+
+type PageProps = {
+  params: Promise <{ id: string }>
+}
+
+export async function generateMetadata({ params }: PageProps ): Promise<Metadata> {
+
+  const {id} = await params;
+  const budget = await getBudget(id);
+
   return {
     title: `CashTrackr - ${budget.name}`,
     description: `CashTrackr - ${budget.name}`,
   }
 }
+export default async function EditBudgetPage({ params }: Readonly <{ params: Promise <{ id: string }>  }> ) {
 
-export default async function EditBudgetPage({ params }: { params: { id: string } }) {
-
-  const { id } = params
+  const { id } = await params
   const budget = await getBudget(id)
 
   return (
@@ -23,7 +30,7 @@ export default async function EditBudgetPage({ params }: { params: { id: string 
           <h1 className='font-black text-4xl text-purple-950 my-5'>
             Editar Presupuesto: {budget.name}
           </h1>
-          <p className="text-xl font-bold">Llena el formulario y crea un nuevo {''}
+          <p className="text-xl getBudgetfont-bold">Llena el formulario y crea un nuevo {''}
             <span className="text-amber-500">presupuesto</span>
           </p>
         </div>

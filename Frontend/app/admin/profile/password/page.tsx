@@ -1,4 +1,4 @@
-import ChangePasswordForm from '../../../../app/components/profile/ChangePasswordForm';
+import ChangePasswordForm from '@/app/components/profile/ChangePasswordForm';
 
 export default async function ChangePasswordPage() {
   return (

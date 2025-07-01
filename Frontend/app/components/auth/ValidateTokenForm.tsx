@@ -2,7 +2,9 @@ import { useEffect, useState, Dispatch, SetStateAction, startTransition } from "
 import { useActionState } from "react";
 import { toast } from "react-toastify";
 import { PinInput, PinInputField } from "@chakra-ui/pin-input";
-import { validateToken } from '../../../actions/validate-token-actions';
+
+import { validateToken } from '@/actions/validate-token-actions';
+
 type ValidateTokenFormProps = {
   setIsValidToken: Dispatch<SetStateAction<boolean>>
   token: string

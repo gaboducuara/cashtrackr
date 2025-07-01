@@ -4,18 +4,23 @@ import { useParams, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 
 import ExpenseForm from "./ExpenseForm";
-import { DraftExpense } from '../../../src/schemas/index';
-import editExpense from "../../../actions/edit-expense-action";
 import ErrorMessage from "../ui/ErrorMessage";
 
-export default function EditExpenseForm({ closeModal }: { closeModal: () => void }) {
+import type { DraftExpense } from '@/src/schemas';
+import editExpense from '@/actions/edit-expense-action';
+
+type EditExpenseFormProps = {
+  closeModal: () => void
+}
+
+export default function EditExpenseForm({ closeModal }: Readonly<EditExpenseFormProps>) {
   const [expense, setExpense] = useState<DraftExpense>()
-  const {id: budgetId} = useParams()
+  const { id: budgetId } = useParams()
   const searchParams = useSearchParams()
   const expenseId = searchParams.get('editExpenseId')!
 
   const editExpenseWithBudgetId = editExpense.bind(null, {
-    budgetId: +budgetId,
+    budgetId: budgetId ? +budgetId : NaN,
     expenseId: +expenseId
   })
   const [state, dispatch] = useActionState(editExpenseWithBudgetId, {
@@ -27,14 +32,18 @@ export default function EditExpenseForm({ closeModal }: { closeModal: () => void
     fetch(url)
       .then(res => res.json())
       .then(data => setExpense(data))
-  }, [])
+  }, [budgetId, expenseId])
 
   useEffect(() => {
-    if(state.success) {
+    if (state.success) {
       toast.success(state.success)
       closeModal()
     }
-  }, [state])
+  }, [state, closeModal])
+
+  if (!budgetId || isNaN(+budgetId)) {
+    return <ErrorMessage>Error: No se encontró el presupuesto o gasto a eliminar.</ErrorMessage>;
+  }
 
   return (
     <>

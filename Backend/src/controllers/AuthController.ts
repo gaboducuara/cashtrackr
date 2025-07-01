@@ -171,6 +171,7 @@ export class AuthController {
       await User.update({ email, name }, {
         where: { id: req.user.id }
       })
+
       res.json('Perfil actualizado correctamente')
       return
     } catch (error) {

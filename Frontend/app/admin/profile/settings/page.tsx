@@ -1,5 +1,6 @@
-import ProfileForm from '../../../components/profile/ProfileForm';
-import { verifySession } from "../../../../src/auth/dal";
+import ProfileForm from '@/app/components/profile/ProfileForm'
+import { verifySession } from '@/src/auth/dal'
+
 export default async function EditProfilePage() {
 
 const { user } = await verifySession()

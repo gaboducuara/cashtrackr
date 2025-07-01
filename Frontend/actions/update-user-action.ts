@@ -1,7 +1,7 @@
 "use server"
 
-import getToken from "../src/auth/token"
-import { ErrorResponseSchema, ProfileFormSchema, SuccessSchema } from "../src/schemas"
+import getToken from "@/src/auth/token"
+import { ErrorResponseSchema, ProfileFormSchema, SuccessSchema } from "@/src/schemas"
 import { revalidatePath } from "next/cache"
 
 type ActionStateType = {
@@ -23,7 +23,7 @@ export async function updateUser(prevState: ActionStateType, formData: FormData)
         }
     }
 
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/auth/user`
     const req = await fetch(url, {
         method: 'PUT',

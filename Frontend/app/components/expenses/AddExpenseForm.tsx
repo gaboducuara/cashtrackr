@@ -1,15 +1,20 @@
 import { DialogTitle } from "@headlessui/react";
-import { useParams } from "next/navigation";
-import { useActionState } from "react";
-import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { useParams } from "next/navigation";
+import { useActionState, useEffect } from "react";
 
 import ExpenseForm from "./ExpenseForm";
-import createExpense from "../../../actions/create-expense-action";
 import ErrorMessage from "../ui/ErrorMessage";
+import createExpense from '@/actions/create-expense-action';
 
 export default function AddExpenseForm({closeModal}: {closeModal: () => void}) {
-    const {id} = useParams()
+
+    const {id} = useParams();
+
+    if (typeof id === "undefined") {
+        throw new Error("Budget ID is undefined.");
+    }
+
     const createExpenseWithBudgetId = createExpense.bind(null, +id)
     const [state, dispatch] = useActionState(createExpenseWithBudgetId, {
         errors: [],
@@ -21,7 +26,7 @@ export default function AddExpenseForm({closeModal}: {closeModal: () => void}) {
             toast.success(state.success)
             closeModal()
         }
-    }, [state])
+    }, [state, closeModal])
 
     return (
         <>

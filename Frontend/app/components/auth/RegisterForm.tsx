@@ -1,13 +1,14 @@
 "use client";
 
 import { useActionState } from 'react';
-import { register } from '../../../actions/create-account-actions';;
+
+import { register } from '../../../actions/create-account-actions';
 import ErrorMessage from '../ui/ErrorMessage';
 import SuccessMessage from '../ui/SuccessMessage';
 
 export default function RegisterForm(){
 
-  const [state, dispatch] = useActionState(register , {
+  const [state, dispatch] = useActionState(register, {
     errors:[],
     success:''
   })

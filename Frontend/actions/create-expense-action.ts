@@ -1,7 +1,7 @@
 "use server"
 
-import getToken from "../src/auth/token";
-import { DraftExpenseSchema, ErrorResponseSchema, SuccessSchema } from '../src/schemas'
+import getToken from "@/src/auth/token";
+import { DraftExpenseSchema, ErrorResponseSchema, SuccessSchema } from '@/src/schemas'
 import { revalidatePath } from "next/cache"
 
 type ActionStateType = {
@@ -23,7 +23,7 @@ export default async function createExpense(budgetId: number, prevState: ActionS
     }
 
     // Generar gasto
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}/expenses`
     const req = await fetch(url, {
         method: 'POST',

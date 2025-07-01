@@ -1,8 +1,8 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import getToken from "../src/auth/token";
-import { Budget, DraftBudgetSchema, ErrorResponseSchema, SuccessSchema } from "../src/schemas"
+import getToken from "@/src/auth/token";
+import { Budget, DraftBudgetSchema, ErrorResponseSchema, SuccessSchema } from "@/src/schemas"
 
 type ActionStateType = {
     errors: string[]
@@ -24,7 +24,7 @@ export async function editBudget(budgetId: Budget['id'], prevState: ActionStateT
         }
     }
 
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}`
     const req = await fetch(url, {
         method: 'PUT',

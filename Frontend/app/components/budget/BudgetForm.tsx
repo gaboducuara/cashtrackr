@@ -1,4 +1,5 @@
-import { Budget } from "../../../src/schemas/index";
+import type { Budget } from '@/src/schemas';
+
 export default function BudgetForm({budget} : {budget?:Budget}) {
     return (
         <>

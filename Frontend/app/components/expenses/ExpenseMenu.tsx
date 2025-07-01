@@ -1,11 +1,11 @@
 "use client"
+
 import { Fragment } from 'react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import { useRouter } from 'next/navigation'
 
-import { Expense } from '../../../src/schemas/index'
-
+import type { Expense } from '@/src/schemas'
 export default function ExpenseMenu({expenseId} : {expenseId : Expense['id']}) {
 
     const router = useRouter()

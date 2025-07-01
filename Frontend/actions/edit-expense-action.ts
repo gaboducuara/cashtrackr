@@ -1,7 +1,7 @@
 "use server"
 
-import getToken from "../src/auth/token";
-import { Budget, DraftExpenseSchema, ErrorResponseSchema, Expense, SuccessSchema } from "../src/schemas/index";
+import getToken from "@/src/auth/token";
+import { Budget, DraftExpenseSchema, ErrorResponseSchema, Expense, SuccessSchema } from "@/src/schemas/index";
 import { revalidatePath } from "next/cache"
 type BudgetAndExpenseIdType = {
     budgetId: Budget['id']
@@ -28,7 +28,7 @@ export default async function editExpense(
         }
     }
 
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}/expenses/${expenseId}`
     const req = await fetch(url, {
         method: 'PUT',

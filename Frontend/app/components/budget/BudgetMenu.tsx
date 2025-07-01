@@ -5,7 +5,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/react"
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"
-import { Budget } from "../../../src/schemas/index";
+import type { Budget } from '@/src/schemas'
+
 export default function BudgetMenu({ budgetId }: { budgetId: Budget['id'] }) {
   const router = useRouter()
 

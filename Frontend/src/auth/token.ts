@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
-export default  function getToken() {
-    const token = cookies().get('CASHTRACKR_TOKEN')?.value
-    return token
+export default async function getToken() {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('CASHTRACKR_TOKEN')?.value
+    return token;
 }

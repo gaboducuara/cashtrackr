@@ -2,7 +2,8 @@
 
 import { toast } from 'react-toastify';
 import { useActionState, useEffect } from 'react'
-import {authenticate} from '../../../actions/authenticate-user-actions';
+import { authenticate } from '@/actions/authenticate-user-actions';
+
 export default function LoginForm() {
 
   const [state, dispatch] = useActionState(authenticate, {

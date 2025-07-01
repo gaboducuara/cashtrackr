@@ -4,8 +4,9 @@ import { Fragment } from 'react'
 import Link from 'next/link'
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react'
 import { Bars3Icon } from '@heroicons/react/20/solid'
-import type { User } from '../../../src/schemas'
-import { logout } from '../../../actions/logout-user-action'
+
+import type { User } from '@/src/schemas'
+import { logout } from '@/actions/logout-user-action'
 
 export default function AdminMenu({user}: {user: User}) {
 

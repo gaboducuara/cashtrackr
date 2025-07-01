@@ -1,6 +1,6 @@
 "use server"
 
-import { ErrorResponseSchema, SuccessSchema, TokenSchema } from '../src/schemas/index'
+import { ErrorResponseSchema, SuccessSchema, TokenSchema } from '@/src/schemas/index'
 type ActionStateType = {
   errors: string[]
   success: string

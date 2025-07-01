@@ -7,7 +7,7 @@ type EmailType = {
 export class AuthEmail {
   static sendConfirmationEmail = async (user: EmailType) => {
     const email = await transport.sendMail({
-      from: 'castrackr <admin@cashtrackr.com>',
+      from: `'castrackr' <${process.env.EMAIL_USER}>`,
       to: user.email,
       subject: 'Confirma tu cuenta en CashTrackr',
       html: ` <p>Hola:  ${user.name}, haz creado tu cuenta correcamente
@@ -18,10 +18,9 @@ export class AuthEmail {
       `
     })
   }
-  /*Construccion del mensaje de Reseteo de Contraseña*/
   static sendPasswordResetToken = async (user: EmailType) => {
     const email = await transport.sendMail({
-      from: 'castrackr <admin@cashtrackr.com>',
+      from: `'castrackr' <${process.env.EMAIL_USER}>`,
       to: user.email,
       subject: 'CashTrackr - Reestablece tu password',
       html: ` <p>Hola: ${user.name}, has solicitado Reestablecer tu password</p>

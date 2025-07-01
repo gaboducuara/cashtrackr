@@ -1,7 +1,7 @@
 "use server"
 
-import getToken from "../src/auth/token"
-import { Budget, ErrorResponseSchema, Expense, SuccessSchema } from "../src/schemas/index"
+import getToken from "@/src/auth/token"
+import { Budget, ErrorResponseSchema, Expense, SuccessSchema } from "@/src/schemas/index"
 import { revalidatePath } from "next/cache"
 
 type BudgetAndExpenseIdType = {
@@ -19,7 +19,7 @@ export default async function deleteExpense(
         prevState: ActionStateType
     ) {
 
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/budget/${budgetId}/expenses/${expenseId}`
     const req = await fetch(url, {
         method: 'DELETE',

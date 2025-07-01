@@ -1,15 +1,13 @@
 import Link from 'next/link';
-import Logo from '../components/ui/Logo';
-import ToastNotification from '../components/ui/ToastNotification';
-import { verifySession } from '../../src/auth/dal';
-import AdminMenu from '../components/admin/AdminMenu';
 
+import { verifySession } from '@/src/auth/dal';
+import Logo from '../components/ui/Logo';
+import AdminMenu from '../components/admin/AdminMenu';
+import ToastNotification from '../components/ui/ToastNotification';
 
 export default async function AdminLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode}>) {
 
   const { user } = await verifySession()
 
@@ -32,7 +30,8 @@ export default async function AdminLayout({
       <section className='max-w-5xl mx-auto mt-20 p-3 py-10'>
         {children}
       </section>
-      <ToastNotification />
+
+      <ToastNotification/>
 
       <footer className='py-5'>
         <p className='text-center'>

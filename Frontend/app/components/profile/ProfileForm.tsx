@@ -3,9 +3,9 @@
 import { useEffect , useActionState} from "react"
 import { toast } from "react-toastify"
 
-import { updateUser } from "../../../actions/update-user-action"
-import {User} from '../../../src/schemas'
 import ErrorMessage from "../ui/ErrorMessage"
+import { updateUser } from '@/actions/update-user-action'
+import type { User } from '@/src/schemas'
 
 export default function ProfileForm({user} : {user: User}) {
 

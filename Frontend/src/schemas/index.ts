@@ -11,7 +11,6 @@ export const RegisterSchema = z.object({
   message: 'Las contraseñas no coinciden',
   path: ['password_confirmation'],
 })
-
 export const LoginSchema = z.object({
   email: z.string()
     .min(1, { message: 'El Email es Obligatorio' })
@@ -19,7 +18,6 @@ export const LoginSchema = z.object({
   password: z.string()
     .min(1, { message: 'La contraseña no puede ir vacio' })
 })
-
 export const ErrorResponseSchema = z.object({
   error: z.string()
 })

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+
+import getToken from '@/src/auth/token';
+import { BudgetsAPIResponseSchema } from '@/src/schemas';
+import { formatCurrency, formatDate } from '@/src/utils';
 import BudgetMenu from '../components/budget/BudgetMenu';
-import getToken from '../../src/auth/token';
-import { formatCurrency, formatDate } from '../../src/utils/index';
-import { BudgetsAPIResponseSchema } from '../../src/schemas/index';
 import DeleteBudgetModal from '../components/budget/DeleteBudgetModal';
 
 export const metadata: Metadata = {
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
   description: 'CashTrackr - Panel de Administración'
 }
 async function getUserBudgets() {
-  const token = getToken()
+
+  const token = await getToken()
   const url = `${process.env.API_URL}/budget`
 
-  try {
     const req = await fetch(url, {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -26,9 +27,6 @@ async function getUserBudgets() {
     const json = await req.json()
     const budgets = BudgetsAPIResponseSchema.parse(json)
     return budgets
-  } catch (error) {
-    throw Error
-  }
 }
 export default async function AdminPage() {
 

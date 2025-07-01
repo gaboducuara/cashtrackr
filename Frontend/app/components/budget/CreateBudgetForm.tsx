@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import { useRouter } from "next/navigation"
 
 import ErrorMessage from '../ui/ErrorMessage';
-import { CreateBudget } from '../../../actions/create-budget-action';
 import BudgetForm from './BudgetForm';
+import { CreateBudget } from '@/actions/create-budget-action';
 
 export default function CreateBudgetForm() {
   const router = useRouter()

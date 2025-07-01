@@ -4,36 +4,39 @@ import { useEffect, useActionState, startTransition } from "react";
 import { toast } from "react-toastify";
 
 import ErrorMessage from "../ui/ErrorMessage";
-import deleteExpense from "../../../actions/delete-expense-action";
+import deleteExpense from '@/actions/delete-expense-action';
+
 type DeleteExpenseForm = {
   closeModal: () => void
 }
-export default function DeleteExpenseForm({ closeModal }: DeleteExpenseForm) {
+export default function DeleteExpenseForm({ closeModal }: Readonly <DeleteExpenseForm> ) {
   const { id: budgetId } = useParams()
   const searchParams = useSearchParams()
   const expenseId = searchParams.get('deleteExpenseId')!
 
   const deleteExpenseWithBudgetId = deleteExpense.bind(null, {
-    budgetId: +budgetId,
+    budgetId: budgetId ? +budgetId : NaN,
     expenseId: +expenseId
   })
   const [state, dispatch] = useActionState(deleteExpenseWithBudgetId, {
     errors: [],
     success: ''
   })
-
+  useEffect(() => {
+    if (!budgetId || !expenseId || isNaN(+budgetId) || isNaN(+expenseId)) {
+      closeModal();
+    }
+  }, [budgetId, expenseId, closeModal]);
   useEffect(() => {
     if(state.success) {
       toast.success(state.success)
       closeModal()
     }
-  }, [state])
+  }, [state, closeModal])
 
-  useEffect(() => {
-    if(!Number.isInteger(+budgetId) || !Number.isInteger(+expenseId)) {
-      closeModal()
-    }
-  }, [])
+  if (!budgetId || !expenseId || isNaN(+budgetId) || isNaN(+expenseId)) {
+    return <ErrorMessage>Error: No se encontró el presupuesto o gasto a eliminar.</ErrorMessage>;
+  }
 
   return (
     <>

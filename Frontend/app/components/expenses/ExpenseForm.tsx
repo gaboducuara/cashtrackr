@@ -1,7 +1,9 @@
-import { DraftExpense } from "../../../src/schemas/index"
+import type { DraftExpense } from '@/src/schemas'
+
 type ExpenseFormProps = {
   expense?: DraftExpense
 }
+
 export default function ExpenseForm({ expense }: ExpenseFormProps) {
   return (
     <>

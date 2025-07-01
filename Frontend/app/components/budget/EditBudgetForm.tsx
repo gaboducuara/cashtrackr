@@ -5,9 +5,10 @@ import { useEffect, useActionState } from "react";
 import { useRouter } from "next/navigation";
 
 import BudgetForm from "./BudgetForm";
-import { Budget } from "../../../src/schemas/index";
-import { editBudget } from "../../../actions/edit-budget-action";
 import ErrorMessage from "../ui/ErrorMessage";
+import type { Budget } from '@/src/schemas';
+import { editBudget } from '@/actions/edit-budget-action';
+
 export default function EditBudgetForm({ budget }: { budget: Budget }) {
 
     const router = useRouter()

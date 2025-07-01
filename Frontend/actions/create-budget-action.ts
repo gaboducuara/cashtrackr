@@ -1,8 +1,8 @@
 "use server"
 
 import { revalidatePath } from 'next/cache'
-import { DraftBudgetSchema, SuccessSchema } from '../src/schemas'
-import getToken from '../src/auth/token';
+import { DraftBudgetSchema, SuccessSchema } from '@/src/schemas'
+import getToken from '@/src/auth/token';
 type ActionStateType = {
     errors: string[]
     success: string
@@ -21,7 +21,7 @@ export async function CreateBudget(prevState: ActionStateType, formData: FormDat
         }
     }
 
-    const token = getToken()
+    const token = await getToken()
     const url = `${process.env.API_URL}/budget`
 
     const req = await fetch(url, {

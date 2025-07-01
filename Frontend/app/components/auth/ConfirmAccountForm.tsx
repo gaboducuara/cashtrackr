@@ -4,10 +4,13 @@ import { useState, useActionState, useEffect, startTransition } from 'react';
 import { PinInput, PinInputField } from '@chakra-ui/pin-input'
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
-import { confirmAccount } from '../../../actions/confirm-account-actions';
+
+import { confirmAccount } from '@/actions/confirm-account-actions';
+
 export default function ConfirmAccountForm() {
 
   const router = useRouter();
+
   const [isComplete, setIsComplete] = useState(false);
   const [token, setToken] = useState('')
   const confirmAccountWithToken = confirmAccount.bind(null, token)
@@ -36,7 +39,7 @@ export default function ConfirmAccountForm() {
         }
       })
     }
-  }, [state])
+  }, [state, router])
 
   const handleChange = (token: string) => {
     setIsComplete(false);

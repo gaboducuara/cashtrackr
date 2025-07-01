@@ -1,6 +1,6 @@
 "use server"
 
-import { ErrorResponseSchema, ForgotPasswordSchema, SuccessSchema } from "../src/schemas"
+import { ErrorResponseSchema, ForgotPasswordSchema, SuccessSchema } from "@/src/schemas"
 type ActionStateType = {
     errors: string[]
     success: string
