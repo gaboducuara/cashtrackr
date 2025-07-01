@@ -1,2 +1,1 @@
-import { Resend } from 'resend';
-export declare const resend: Resend;
+export declare const resend: any;
