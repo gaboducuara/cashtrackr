@@ -10,7 +10,32 @@
 [![Render Services](https://img.shields.io/badge/Render_Services-5A4CAD?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 [![Neon PostgreSQL](https://img.shields.io/badge/Neon_PostgreSQL-00E59B?style=for-the-badge&logo=postgresql&logoColor=white)](https://neon.tech/)
 
-Aplicación web moderna con funcionalidades completas de backend y frontend. Este proyecto implementa una arquitectura robusta con Nest TS en el backend y Next.TS en el frontend. Incluye autenticación, manejo de archivos, CRUDs, validaciones y despliegue en la nube.
+Esta es una aplicación web moderna desarrollada con una arquitectura Full Stack robusta que combina lo mejor del ecosistema JavaScript/TypeScript, integrando:
+
+Backend en Node.js + Express + TypeScript
+
+Frontend en Next.js + React + TailwindCSS
+
+Despliegue en la nube con Render (backend) y Vercel (frontend)
+
+🚀 Características principales
+🔐 Autenticación segura con JWT y bcrypt
+
+📦 CRUDs completos en el backend utilizando Sequelize ORM y PostgreSQL
+
+📄 Validaciones robustas con express-validator y zod
+
+🔄 Gestión de estados y formularios en frontend usando componentes accesibles (@headlessui/react, @chakra-ui/pin-input)
+
+📬 Envío de correos mediante nodemailer
+
+📊 Testing con Jest, Supertest y mocks HTTP
+
+🌐 Interfaz UI moderna y responsive con TailwindCSS, Heroicons y React Toastify
+
+⚡ Desempeño optimizado con herramientas como morgan y express-rate-limit
+
+📤 Despliegue continuo usando Render (API) y Vercel (UI)
 
 ![HU3withoutlogo](https://res.cloudinary.com/dgkwrzh9x/image/upload/f_auto,q_auto/Captura_de_pantalla_218_itjrjc)
 
