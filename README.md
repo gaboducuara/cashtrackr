@@ -64,7 +64,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 | <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"> | **Next.js 15** – Framework React para renderizado SSR, SSG e híbrido. Ideal para producción. |
 | <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"> | **React 19** – Librería para construir interfaces de usuario interactivas y declarativas. |
 | <img style="width: 100px; min-width: 100px" src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png"> | **Tailwind CSS** – Framework CSS de utilidad para estilos rápidos y personalizados. |
-| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/logo/logomark-colored.svg"> | **Chakra UI** – Librería de componentes accesibles para React. En este caso se usa `@chakra-ui/pin-input`. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/WzVbFTb6/descarga.png"> | **Chakra UI** – Librería de componentes accesibles para React. En este caso se usa `@chakra-ui/pin-input`. |
 | <img style="width: 100px; min-width: 100px" src="https://headlessui.com/images/logo.svg"> | **Headless UI** – Componentes sin estilo con lógica accesible, listos para personalizar con Tailwind. |
 | <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/62006216?s=200&v=4"> | **Heroicons** – Íconos SVG de interfaz compatibles con React y Tailwind. |
 | <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/35243481?s=200&v=4"> | **React Toastify** – Notificaciones fáciles de usar en React. Ideal para alertas de usuario. |
