@@ -1,6 +1,10 @@
-# 🛍️ Web App Store – Fullstack App (Nest ts + Next.ts)  🙌
+# 🛍️ Web App CashTrackr – Fullstack App (Node ts + Next.ts)  🙌
 
-[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Zod](https://img.shields.io/badge/Zod-2C3E50?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Render Services](https://img.shields.io/badge/Render_Services-5A4CAD?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
@@ -131,7 +135,7 @@ Aplicación web moderna con funcionalidades completas de backend y frontend. Est
 
 - Backend: Puedes desplegarlo en plataformas como Render, Railway o Heroku.
 - Frontend: Desplegado en Vercel.
-- Demo en Vivo - [🛍️ Web App Store](https://store-chi-five.vercel.app/ "Store") 🌐
+- Demo en Vivo - [🛍️ Web CashTrackr](https://cashtrackr-ashy.vercel.app "CashTrackr") 🌐
 
 Agradecimientos
 Gracias por visitar este proyecto 🙌 
