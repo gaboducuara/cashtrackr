@@ -3,6 +3,7 @@ import morgan from 'morgan'
 import { db } from './config/db'
 import budgetRouter from './routes/budgetRouter'
 import authRouter from './routes/authRouter'
+import { limiter } from './config/limiter'
 
 export async function connectDB() {
   try {
@@ -18,7 +19,7 @@ connectDB()
 const app: Application = express()
 
 app.set('trust proxy', true);
-
+// app.use(limiter);
 app.use(morgan('dev'))
 
 app.use(express.json())
