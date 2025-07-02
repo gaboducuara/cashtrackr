@@ -34,7 +34,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 
 -  📤 Despliegue continuo usando Render (API) y Vercel (UI)
 
-![HU3withoutlogo](https://res.cloudinary.com/dgkwrzh9x/image/upload/f_auto,q_auto/Captura_de_pantalla_218_itjrjc)
+![HU3withoutlogo](https://i.postimg.cc/PqZzM5yg/Captura-de-pantalla-286.png)
 
 
 ## Tecnologías utilizadas. 🚀
