@@ -17,6 +17,8 @@ connectDB()
 
 const app: Application = express()
 
+app.set('trust proxy', true);
+
 app.use(morgan('dev'))
 
 app.use(express.json())
