@@ -26,7 +26,9 @@ export async function register(prevState: ActionStateType, formData: FormData) {
   }
 
   const url = `${process.env.API_URL}/auth/create-account`
-  const req = await fetch(url, {
+
+  try {
+    const req = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -38,7 +40,14 @@ export async function register(prevState: ActionStateType, formData: FormData) {
     })
   })
 
-  const json = await req.json()
+  if (!req.ok) {
+      return {
+        errors: ['Error en la solicitud al servidor.'],
+        success: ''
+      };
+    }
+
+    const json = await req.json()
   if(req.status === 409){
     const {error} = ErrorResponseSchema.parse(json)
     return {
@@ -51,5 +60,12 @@ export async function register(prevState: ActionStateType, formData: FormData) {
   return {
     errors: [],
     success
+  }
+
+  } catch(error) {
+    return {
+      errors: ['No se pudo conectar con el servidor.'],
+      success: ''
+    };
   }
 }

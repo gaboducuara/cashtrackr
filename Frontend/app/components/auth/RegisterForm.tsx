@@ -2,9 +2,9 @@
 
 import { useActionState } from 'react';
 
-import { register } from '../../../actions/create-account-actions';
 import ErrorMessage from '../ui/ErrorMessage';
 import SuccessMessage from '../ui/SuccessMessage';
+import { register } from '@/actions/create-account-actions';
 
 export default function RegisterForm(){
 
