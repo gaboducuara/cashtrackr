@@ -38,7 +38,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 
 
 ## Tecnologías utilizadas. 🚀
-### Backend – 🧠 Nest TS (TypeScript). Framework backend modular y escalable.
+### Backend – 🧠 Node t TS (TypeScript). Framework backend modular y escalable.
 
 ****
 |||
@@ -52,10 +52,9 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.svg"> | **dotenv** – Manejo de variables de entorno para configuración segura. |
 | <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/8/88/Status_iucn_EX_icon.svg"> | **bcryptjs** – Librería para el cifrado de contraseñas. |
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/nodemailer/nodemailer/master/assets/nm_logo_200x136.png"> | **Nodemailer** – Envío de correos electrónicos desde el servidor. |
-| <img style="width: 100px; min-width: 100px" src="https://jestjs.io/img/opengraph.png"> | **Jest** – Framework de pruebas para código JavaScript y TypeScript. |
-| <img style="width: 100px; min-width: 100px" src="https://github.com/visionmedia/supertest/raw/master/logo.png"> | **Supertest** – Librería para probar endpoints HTTP de forma automatizada. |
-| <img style="width: 100px; min-width: 100px" src="https://express-validator.github.io/images/logo.svg"> | **express-validator** – Middleware para validación de solicitudes en rutas Express. |
-| <img style="width: 100px; min-width: 100px" src="https://cdn-icons-png.flaticon.com/512/8061/8061370.png"> | **express-rate-limit** – Protección contra ataques de fuerza bruta por IP. |
+| <img style="width: 100px; min-width: 100px" src="https://jestjs.io/img/opengraph.png"> | **Jest** - Framework de pruebas para código JavaScript y TypeScript. |
+| <img style="width: 100px; min-width: 100px" src="https://github.com/visionmedia/supertest/raw/master/logo.png"> | **express-validator** – Middleware para validación de solicitudes en rutas Express. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/15QG9S9B/Captura-de-pantalla-288.png"> | **express-rate-limit** – Protección contra ataques de fuerza bruta por IP. |
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/expressjs/morgan/master/morgan-logo.png"> | **Morgan** – Logger HTTP para desarrollo. |
 
 
