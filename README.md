@@ -54,7 +54,6 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/nodemailer/nodemailer/master/assets/nm_logo_200x136.png"> | **Nodemailer** – Envío de correos electrónicos desde el servidor. |
 | <img style="width: 100px; min-width: 100px" src="https://jestjs.io/img/opengraph.png"> | **Jest** - Framework de pruebas para código JavaScript y TypeScript. |
 | <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/15QG9S9B/Captura-de-pantalla-288.png"> | **express-validator** – Middleware para validación de solicitudes en rutas Express. |
-| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/expressjs/morgan/master/morgan-logo.png"> | **Morgan** – Logger HTTP para desarrollo. |
 
 
 ### Frontend – 🖼️ Next.ts 15 (React 19)
@@ -62,15 +61,17 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 ****
 |||
 |:---:|:---:|
-| <img style="width: 100px; min-width: 100px" src="https://www.digitality.es/img-articulos/ampliadas/que-es-nextjs-y-para-que-sirve-1-1697560678.jpg">| Next.js – Framework React para SSR y SSG. |
-| <img style="width: 100px; min-width: 100px" src="https://reactjs.org/favicon.ico">| React 19 – Última versión con mejoras en rendimiento. |
-| <img style="width: 100px; min-width: 100px" src="https://static-00.iconduck.com/assets.00/tailwind-css-icon-256x154-bhw4dmbr.png">| Tailwind CSS – Utilidades para estilos rápidos y responsive. |
-| <img style="width: 100px; min-width: 100px" src="https://refine-web.imgix.net/blog/2023-07-04-react-query-intro/social-2.png?w=1788">| React Query – Manejo de datos con cacheo y sincronización. |
-| <img style="width: 100px; min-width: 100px" src="https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg">| Zustand – Manejo de estado simple y moderno. |
-| <img style="width: 100px; min-width: 100px" src="https://user-images.githubusercontent.com/35040146/100596753-851b5e00-3322-11eb-9073-1a50e5adcb53.png">| React Toastify – Notificaciones amigables. |
-| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/react-dropzone/react-dropzone/master/logo/logo.png">| React Dropzone – Subida de archivos con drag & drop. |
-| <img style="width: 100px; min-width: 100px" src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1713969399706%2Fc21020ec-8947-4631-90e0-775f374f26fd.jpeg">| React Calendar – Componente de calendario interactivo. |
-| <img style="width: 100px; min-width: 100px" src="https://miro.medium.com/v2/resize:fit:1050/0*yTnXWjd6Tkdr17HN.png">| Zod – Validaciones del lado del cliente con tipado estático. |
+| <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"> | **Next.js 15** – Framework React para renderizado SSR, SSG e híbrido. Ideal para producción. |
+| <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"> | **React 19** – Librería para construir interfaces de usuario interactivas y declarativas. |
+| <img style="width: 100px; min-width: 100px" src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png"> | **Tailwind CSS** – Framework CSS de utilidad para estilos rápidos y personalizados. |
+| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/logo/logomark-colored.svg"> | **Chakra UI** – Librería de componentes accesibles para React. En este caso se usa `@chakra-ui/pin-input`. |
+| <img style="width: 100px; min-width: 100px" src="https://headlessui.com/images/logo.svg"> | **Headless UI** – Componentes sin estilo con lógica accesible, listos para personalizar con Tailwind. |
+| <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/62006216?s=200&v=4"> | **Heroicons** – Íconos SVG de interfaz compatibles con React y Tailwind. |
+| <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/35243481?s=200&v=4"> | **React Toastify** – Notificaciones fáciles de usar en React. Ideal para alertas de usuario. |
+| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/colinhacks/zod/master/logo.svg"> | **Zod** – Librería de validación y parsing de datos TypeScript-first. Potente y segura. |
+| <img style="width: 100px; min-width: 100px" src="https://cdn.worldvectorlogo.com/logos/typescript.svg"> | **TypeScript** – Lenguaje tipado que fortalece la escalabilidad de React y Next.js. |
+| <img style="width: 100px; min-width: 100px" src="https://seeklogo.com/images/E/eslint-logo-BF296C2141-seeklogo.com.png"> | **ESLint** – Linter para mantener la calidad y consistencia del código. Integrado con Next. |
+| <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Postcss.png"> | **PostCSS / Autoprefixer** – Herramientas de procesamiento CSS para compatibilidad cross-browser. |
 
 ### Alojamiento – ☁️
 
