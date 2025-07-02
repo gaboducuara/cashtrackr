@@ -90,7 +90,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 #### Clonar el repositorio.
 
 	git clone https://github.com/gaboducuara/store.git
-    cd store
+    cd cashtrackr
 	cd backend
 
 ## Backend 📦
@@ -100,15 +100,15 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 
 ### Configurar variables de entorno.
 
-	DATABASE_HOST=
-    DATABASE_PORT=5432
-	DATABASE_USER=
-    DATABASE_PASS=
-	DATABASE_NAME=
-    DATABASE_SSL_MODE=require
-	CLOUDINARY_NAME=
-    CLOUDINARY_API_KEY=
-	CLOUDINARY_API_SECRET=
+	PORT=3001
+    DATABASE_URL=
+    EMAIL_HOST=smtp.gmail.com
+    EMAIL_USER=
+    EMAIL_PASS=
+    EMAIL_PORT=
+    NODE_ENV=development
+    JWT_SECRET=
+    FRONTEND_URL=http://localhost:3000
 
 ### Comandos útiles 🧪
 
@@ -130,7 +130,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 
 ## Frontend 📦
 
-    cd store
+    cd cashtrackr
 	cd frontend
 
 #### Instalar dependencias.
@@ -139,9 +139,8 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 
 #### Configurar variables de entorno.
 
-    API_URL=http://localhost:3001
-    NEXT_PUBLIC_API_URL=http://localhost:3001
-    NEXT_PUBLIC_DOMAIN=http://localhost:3000
+    API_URL=http://localhost:3001/api
+    NEXT_PUBLIC_URL=http://localhost:3000
 
 #### Ejecuta el frontend en modo desarrollo.
 
