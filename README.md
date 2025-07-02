@@ -64,14 +64,12 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 | <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"> | **Next.js 15** – Framework React para renderizado SSR, SSG e híbrido. Ideal para producción. |
 | <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"> | **React 19** – Librería para construir interfaces de usuario interactivas y declarativas. |
 | <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/WzVbFTb6/descarga.png"> | **Tailwind CSS** – Framework CSS de utilidad para estilos rápidos y personalizados. |
-| <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/logo/logomark-colored.svg"> | **Chakra UI** – Librería de componentes accesibles para React. En este caso se usa `@chakra-ui/pin-input`. |
-| <img style="width: 100px; min-width: 100px" src="https://headlessui.com/images/logo.svg"> | **Headless UI** – Componentes sin estilo con lógica accesible, listos para personalizar con Tailwind. |
-| <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/62006216?s=200&v=4"> | **Heroicons** – Íconos SVG de interfaz compatibles con React y Tailwind. |
-| <img style="width: 100px; min-width: 100px" src="https://avatars.githubusercontent.com/u/35243481?s=200&v=4"> | **React Toastify** – Notificaciones fáciles de usar en React. Ideal para alertas de usuario. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/HLRs4b32/Chakra-UI.png"> | **Chakra UI** – Librería de componentes accesibles para React. En este caso se usa `@chakra-ui/pin-input`. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/XJ5N2Xz0/headless.png"> | **Headless UI** – Componentes sin estilo con lógica accesible, listos para personalizar con Tailwind. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/W4h1k5mz/Hero-Icons.png"> | **Heroicons** c– Íconos SVG de interfaz compatibles con React y Tailwind. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/0jqkhxTK/React-Toastify.png"> | **React Toastify** – Notificaciones fáciles de usar en React. Ideal para alertas de usuario. |
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/colinhacks/zod/master/logo.svg"> | **Zod** – Librería de validación y parsing de datos TypeScript-first. Potente y segura. |
-| <img style="width: 100px; min-width: 100px" src="https://cdn.worldvectorlogo.com/logos/typescript.svg"> | **TypeScript** – Lenguaje tipado que fortalece la escalabilidad de React y Next.js. |
-| <img style="width: 100px; min-width: 100px" src="https://seeklogo.com/images/E/eslint-logo-BF296C2141-seeklogo.com.png"> | **ESLint** – Linter para mantener la calidad y consistencia del código. Integrado con Next. |
-| <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Postcss.png"> | **PostCSS / Autoprefixer** – Herramientas de procesamiento CSS para compatibilidad cross-browser. |
+| <img style="width: 100px; min-width: 100px" src="https://cdn.worldvectorlogo.com/logos/typescript.svg"> | **TypeScript** – Lenguaje tipado que fortalece la escalabilidad de React y Next.js.
 
 ### Alojamiento – ☁️
 
