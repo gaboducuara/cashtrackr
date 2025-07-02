@@ -54,7 +54,7 @@ Despliegue en la nube con Render (backend) y Vercel (frontend)
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/nodemailer/nodemailer/master/assets/nm_logo_200x136.png"> | **Nodemailer** – Envío de correos electrónicos desde el servidor. |
 | <img style="width: 100px; min-width: 100px" src="https://jestjs.io/img/opengraph.png"> | **Jest** - Framework de pruebas para código JavaScript y TypeScript. |
 | <img style="width: 100px; min-width: 100px" src="https://github.com/visionmedia/supertest/raw/master/logo.png"> | **express-validator** – Middleware para validación de solicitudes en rutas Express. |
-| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/15QG9S9B/Captura-de-pantalla-288.png"> | **express-rate-limit** – Protección contra ataques de fuerza bruta por IP. |
+| <img style="width: 100px; min-width: 100px" src="https://i.postimg.cc/15QG9S9B/Captura-de-pantalla-288.png"> | **express-validator** – Middleware para validación de solicitudes en rutas Express. |
 | <img style="width: 100px; min-width: 100px" src="https://raw.githubusercontent.com/expressjs/morgan/master/morgan-logo.png"> | **Morgan** – Logger HTTP para desarrollo. |
 
 
