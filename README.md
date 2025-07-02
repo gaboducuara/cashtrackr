@@ -12,30 +12,27 @@
 
 Esta es una aplicación web moderna desarrollada con una arquitectura Full Stack robusta que combina lo mejor del ecosistema JavaScript/TypeScript, integrando:
 
-Backend en Node.js + Express + TypeScript
-
-Frontend en Next.js + React + TailwindCSS
-
 Despliegue en la nube con Render (backend) y Vercel (frontend)
 
-🚀 Características principales
-🔐 Autenticación segura con JWT y bcrypt
+-  🚀 Características principales
 
-📦 CRUDs completos en el backend utilizando Sequelize ORM y PostgreSQL
+-  🔐 Autenticación segura con JWT y bcrypt
 
-📄 Validaciones robustas con express-validator y zod
+-  📦 CRUDs completos en el backend utilizando Sequelize ORM y PostgreSQL
 
-🔄 Gestión de estados y formularios en frontend usando componentes accesibles (@headlessui/react, @chakra-ui/pin-input)
+-  📄 Validaciones robustas con express-validator y zod
 
-📬 Envío de correos mediante nodemailer
+-  🔄 Gestión de estados y formularios en frontend usando componentes accesibles (@headlessui/react, @chakra-ui/pin-input)
 
-📊 Testing con Jest, Supertest y mocks HTTP
+-  📬 Envío de correos mediante nodemailer
 
-🌐 Interfaz UI moderna y responsive con TailwindCSS, Heroicons y React Toastify
+-  📊 Testing con Jest, Supertest y mocks HTTP
 
-⚡ Desempeño optimizado con herramientas como morgan y express-rate-limit
+-  🌐 Interfaz UI moderna y responsive con TailwindCSS, Heroicons y React Toastify
 
-📤 Despliegue continuo usando Render (API) y Vercel (UI)
+-  ⚡ Desempeño optimizado con herramientas como morgan y express-rate-limit
+
+-  📤 Despliegue continuo usando Render (API) y Vercel (UI)
 
 ![HU3withoutlogo](https://res.cloudinary.com/dgkwrzh9x/image/upload/f_auto,q_auto/Captura_de_pantalla_218_itjrjc)
 
